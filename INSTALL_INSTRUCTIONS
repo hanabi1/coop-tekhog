@@ -1,0 +1,24 @@
+INSTALL INSTRUCTIONS
+====================
+
+1. Move config.php from the folder /documentation to /application/config/
+
+2 . Modify the base path in config.php to your own project home folder
+	WARNING don't forget the / at the end
+
+	ex:
+    //define('URL', 'http://localhost/samhalls_sar/');
+
+3. Check your DB password, it's usually blank...
+   ex:
+   //define('DB_PASS', '');
+
+
+   Congrats! It should now work!
+
+
+ 4. (OPTIONAL as of now) A good idea is to also apply the DB export DB-Export.sql in /documentation.
+ 	You don't need to create a DB first just run the magic SQL file in your DB-app of choice and PRESTO!
+
+
+There is also a good tutorial on this MVC in the folder /tutorial
