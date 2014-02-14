@@ -48,5 +48,5 @@ SCRUM LAPPAR
 *Inkludera SITE_TEMPLATE
 
 *Admin Backend
-
+- Redigera hemside text (kontakt, allmän info)
 
