@@ -37,6 +37,8 @@ SCRUM LAPPAR
 
 
 <--BACKEND-->
+*Skapa en htaccess fil i serverrooten
+blir problem annars om vi döper en controller till dåligt valda namn...
 
 *MVC GRUND
  -GIT ska ignorera lokala config filer.
