@@ -3,21 +3,29 @@ INSTALL INSTRUCTIONS
 
 1. Move config.php from the folder /documentation to /application/config/
 
-2 . Modify the base path in config.php to your own project home folder
+2 . Move /documentation/.htaccess(ta-bort-denna-parantes) to the root
+
+3. Rename it to .htaccess and change base path to yours.
+
+	ex. 
+	//RewriteBase /plugg/git/coop-tekhog/
+
+4 . Modify the base path in config.php to your own project home folder
 	WARNING don't forget the / at the end
 
 	ex:
     //define('URL', 'http://localhost/samhalls_sar/');
 
-3. Input your DB password in config.php.
+5. Input your DB password in config.php.
    It's usually blank...
    
    ex:
    //define('DB_PASS', '');
 
-4. Create a DB called 'samhalls_sar' (utf-8) with Sequel Pro or Heidi etc
+6. Create a DB called 'samhalls_sar' (utf-8) with Sequel Pro or Heidi etc
  
-5. Copy the DB export's SQL into the SQL query window and...PRESTO!
+
+7. Copy the DB export's SQL into the SQL query window and...PRESTO!
 
    Congrats! It should now work!
 
