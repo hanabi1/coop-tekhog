@@ -27,4 +27,15 @@ class Admin extends Controller
         require 'application/views/admin/index.php';
         require 'application/views/_templates/footer.php';
     }
+
+    public function login()
+    {
+        // debug message to show where you are, just for the demo
+        echo 'this is login page in admin controller';
+
+        // load views. 
+        require 'application/views/_templates/header.php';
+        require 'application/views/admin/login.php';
+        require 'application/views/_templates/footer.php';
+    }
 }
