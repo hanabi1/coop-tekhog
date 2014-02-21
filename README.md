@@ -37,6 +37,12 @@ SCRUM LAPPAR
 
 
 <--BACKEND-->
+*Implementera templating
+
+* ta hand om titlen i base konstruktorn titeln när 
+
+* ob_get_clean innan bootstrap exekverat klart (research)
+
 *Skapa en htaccess fil i serverrooten
 blir problem annars om vi döper en controller till dåligt valda namn...
 
