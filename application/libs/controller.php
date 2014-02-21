@@ -9,14 +9,15 @@ class Controller
      * @var null Database Connection
      */
     public $db = null;
-
+    protected $pageTitle = '';
     /**
      * Whenever a controller is created, open a database connection too. The idea behind is to have ONE connection
      * that can be used by multiple models (there are frameworks that open one connection per model).
      */
-    function __construct()
+    function __construct($pageTitleIn)
     {
         $this->openDatabaseConnection();
+        $this->pageTitle=$pageTitleIn;
     }
 
     /**
@@ -50,5 +51,15 @@ class Controller
         require 'application/models/' . strtolower($model_name) . '.php';
         // return new model (and pass the database connection to the model)
         return new $model_name($this->db);
+    }
+    //array($this->pageTitle => 'title')
+    public function dressTemplate($templateName, array $data = array()){
+        // takes first array level of data and generates variables with that key name
+        extract($data);
+        // capture all templating output using a buffer
+        ob_start();
+        require('application/views' . $templateName . '.php');
+        $htmlString = ob_get_clean();
+        return $htmlString;
     }
 }

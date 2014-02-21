@@ -25,7 +25,8 @@ class Admin extends Controller
         // load views. within the views we can echo out $songs and $amount_of_songs easily
         //head.php only contains
 
-        require 'application/views/_templates/head.php';        
+
+        echo $this->dressTemplate('/_templates/head', array('title'=> $this->pageTitle));  
         require 'application/views/_templates/header.php';
         require 'application/views/admin/index.php';
         require 'application/views/_templates/footer.php';
@@ -33,10 +34,8 @@ class Admin extends Controller
 
     public function login()
     {
-        // debug message to show where you are, just for the demo
-        echo 'this is login page in admin controller';
-
         // load views. 
+        echo $this->dressTemplate('/_templates/head', array('title'=> $this->pageTitle));        
         require 'application/views/_templates/header.php';
         require 'application/views/admin/login.php';
         require 'application/views/_templates/footer.php';
