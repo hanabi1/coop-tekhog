@@ -10,6 +10,7 @@ class Controller
      */
     public $db = null;
     protected $pageTitle = '';
+    protected $movieModel;
     /**
      * Whenever a controller is created, open a database connection too. The idea behind is to have ONE connection
      * that can be used by multiple models (there are frameworks that open one connection per model).

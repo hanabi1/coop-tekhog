@@ -21,5 +21,6 @@
         <link href="<?php echo URL; ?>public/css/style.css" rel="stylesheet">
         <!-- our JavaScript -->
         <script src="<?php echo URL; ?>public/js/application.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>   
     </head>
     <body>
