@@ -5,16 +5,16 @@
 </div>
 
 <div id="page2">
-  <a id="filmarna"></a>
-    Portfolio page content goes here.
+  <a id="filmskaparna"></a>
+    Moviemaker page content goes here.
 </div>
 
 <div id="page3">
-  <a id="Filmerna"></a>
-    Contact page content goes here.
+  <a id="filmerna"></a>
+    Movie content goes here.
 </div>
 
 <div id="page4">
-  <a id="Kontakt"></a>
-  Contact page content goes here
+  <a id="kontakt"></a>
+  Contact content goes here
 </div>
