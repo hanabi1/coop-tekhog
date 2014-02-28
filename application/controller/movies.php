@@ -26,4 +26,10 @@ class Movies extends Controller
         header('Content-Type: application/json');
         echo json_encode($movieModel->getMovie($title)); 
     }      
+    public function getMoviesFromAPI(){
+        $movieModel = $this->loadModel('MoviesModel');   
+        header('Content-Type: application/json');
+        echo $movieModel->getAllMoviesFromAPI(); 
+    }
 }
+
