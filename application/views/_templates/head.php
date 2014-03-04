@@ -23,13 +23,14 @@
         <link href="<?php echo URL; ?>public/css/jquery-ui.css" rel="stylesheet">
         <link href="<?php echo URL; ?>public/css/style.css" rel="stylesheet">
         <link href="<?php echo URL; ?>public/css/css.less" rel="stylesheet">
+        <!-- our JavaScript -->
+        <script src="<?php echo URL; ?>public/js/application.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>  
         <!-- Scrips for our videoslider -->
         <script src="<?php echo URL; ?>public/js/jquery.bxslider.js"></script>
         <script src="<?php echo URL; ?>public/js/jquery.bxslider.min.js"></script>
         <script src="<?php echo URL; ?>public/js/jquery.easing.1.3.js"></script>
         <script src="<?php echo URL; ?>public/js/jquery.fitvids.js"></script>
-        <!-- our JavaScript -->
-        <script src="<?php echo URL; ?>public/js/application.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>   
+         
     </head>
     <body>
