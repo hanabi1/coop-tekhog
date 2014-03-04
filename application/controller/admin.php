@@ -20,7 +20,7 @@ class Admin extends Controller
         //echo 'Message from Controller: You are in the controller Admin, using the method index()';
 
         $admin_model = $this->loadModel('AdminModel');
-        $movieModel = loadModel('MoviesModel');        
+        $movieModel = $this->loadModel('MoviesModel');        
         $movies = $admin_model->getAllMovies();
 
         // load views. within the views we can echo out $songs and $amount_of_songs easily

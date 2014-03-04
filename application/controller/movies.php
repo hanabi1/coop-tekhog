@@ -18,13 +18,13 @@ class Movies extends Controller
     {
         $movieModel = $this->loadModel('MoviesModel');   
         header('Content-Type: application/json');
-        echo json_encode($movieModel->getallmovies()); 
+        echo json_encode($movieModel->getAllMoviesFromDB()); 
     }
     public function getmovie($title)
     {
         $movieModel = $this->loadModel('MoviesModel');   
         header('Content-Type: application/json');
-        echo json_encode($movieModel->getMovie($title)); 
+        echo json_encode($movieModel->getMovieFromDB($title)); 
     }      
     public function getMoviesFromAPI(){
         $movieModel = $this->loadModel('MoviesModel');   
