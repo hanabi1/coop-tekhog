@@ -23,14 +23,17 @@ function renderData (movies) {
 	for (var i = 0;i < movies.length;i++) {
 		console.log(movies[i].id)
 		// Add the movie links to our div with class bxslider.
-    $('.bxslider').append(
-			'<li class="slide"><iframe width="560" height="315" src="'+movies[i].link+'"frameborder="0" allowfullscreen></iframe></li>'
+
+		$('.bxslider').append(
+			'<li class="slide"><iframe width="560" height="315" src="'+ movies[i].link +'"frameborder="0" allowfullscreen></iframe></li>'
 		)
-    // Add the titles to div with ID bx-pager.
-		$('#bx-pager').append(
-			'<a data-slide-index="'+i+'" href=""><p>'+ movies[i].title+'</p> </a>'
+		// Add the titles+author to div with ID bx-pager.
+		$('#bx-pager').append( 
+			'<a data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
 		)
+
 	};
+
 	videoSlider();
 }
 
