@@ -1,33 +1,32 @@
 
+// Wait for DOM to be ready!
 $(document).ready(function(){
-	/*$.getJSON ("application/controller/movies.php", processData);
-	function processData (data){
-		console.log(data);
-
-	};*/
-	
 	$.ajax({
-		url:"movies/getallmovies",
+		// Get all movies from our database.
+    url:"movies/getallmovies",
 		dataType:"json",
 		cache: false,
-		success:function (data) {
+		// If successfull, run our renderData function and send the data (a JSON-object) to it.
+    success:function (data) {
 			renderData(data);
 		},
-		error:function() {
-			console.log('feeeeeeeeeeeeeeeeeeeeeeeeeeel');
+    // If error.
+		error:function(errorData) {
+			console.log("There seems to be an error fetching the data." + errorData.error);
 		}
 	})
-
-
-
 });
 
+
 function renderData (movies) {
+  // Loop to add stuff from JSON-data (movies variable) to the DOM.
 	for (var i = 0;i < movies.length;i++) {
 		console.log(movies[i].id)
-		$('.bxslider').append(
+		// Add the movie links to our div with class bxslider.
+    $('.bxslider').append(
 			'<li class="slide"><iframe width="560" height="315" src="'+movies[i].link+'"frameborder="0" allowfullscreen></iframe></li>'
 		)
+    // Add the titles to div with ID bx-pager.
 		$('#bx-pager').append(
 			'<a data-slide-index="'+i+'" href=""><p>'+ movies[i].title+'</p> </a>'
 		)
@@ -35,6 +34,7 @@ function renderData (movies) {
 	videoSlider();
 }
 
+// Activate the videoslider. This has to be done after the videos has been added to our DOM.
 function videoSlider(){
 	$('.bxslider').bxSlider({
 		video: true,
