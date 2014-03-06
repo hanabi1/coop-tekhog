@@ -62,3 +62,6 @@ blir problem annars om vi döper en controller till dåligt valda namn...
 
 * Add error handling to cURL connection
 * use curl asyncronous if possible
+
+* DO NOT FORGET TO MERGE global_config.php into config.php 
+  when we don't need to worry about git/ignore issues anymore.
