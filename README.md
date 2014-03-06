@@ -60,3 +60,5 @@ blir problem annars om vi döper en controller till dåligt valda namn...
 *Admin Backend
 - Redigera hemside text (kontakt, allmän info)
 
+* Add error handling to cURL connection
+* use curl asyncronous if possible
