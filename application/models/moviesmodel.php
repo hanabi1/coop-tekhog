@@ -44,6 +44,22 @@ class MoviesModel
     //This function gets Selected JSON entries from  Youtube API
     //Returns VALID JSON
     public function getAllMoviesFromAPI(){
+
+        //Get the last database update time to prevent spamming of the Youtube API
+        $lastRefreshTime = $this->getLastDatabaseRefresh();    
+        
+        //Get the current UNIX time (all the seconds from around 1970)
+        $currentUnixTime = time();
+
+        //If the database was updated in the last hour the just return the stored values from the database
+        //Instead of getting new data from youtube
+        if(!$currentUnixTime > ($lastRefreshTime + (60*60))){
+            return json_encode($this->movieModel->getAllMoviesFromDB(),JSON_UNESCAPED_UNICODE);
+        }
+
+        //Update the last refresh time
+        $this->setNewDatabaseRefreshTime($currentUnixTime); 
+
         //IMPORTANT!! 
         //Enter CustomersPlaylist ID
         //do not include "PL" that is usually in the beginning of a Playlist ID
@@ -91,6 +107,21 @@ class MoviesModel
             $moviesData[]=$data['feed']['entry'][$i]['media$group']['media$keywords'];
         }
         //Return the relevant data as JSON
-        return json_encode($moviesData);
+        return json_encode($moviesData,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function getLastDatabaseRefresh(){
+        $sql = "SELECT lastupdate FROM system limit 1";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetch()['lastupdate'];
+    }
+    public function setNewDatabaseRefreshTime($currentTimeStamp){
+        $sql = "UPDATE system
+                SET lastupdate = :currentTimeStamp";
+        $query = $this->db->prepare($sql);
+
+        return $query->execute(array('currentTimeStamp'=>$currentTimeStamp));
     }
 }
