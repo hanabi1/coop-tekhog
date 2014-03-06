@@ -53,7 +53,7 @@ class MoviesModel
         $ch = curl_init();
         
         //Sets up the url to get
-        curl_setopt($ch, CURLOPT_URL, 'https://gdata.youtube.com/feeds/api/playlists/' . $playlistID . '?v=2&alt=json');
+        curl_setopt($ch, CURLOPT_URL, 'http://gdata.youtube.com/feeds/api/playlists/' . $playlistID . '?v=2&alt=json');
         
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
