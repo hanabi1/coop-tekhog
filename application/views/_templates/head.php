@@ -26,7 +26,6 @@
         <link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>  
         <!-- our JavaScript -->
         <script src="<?php echo URL; ?>public/js/application.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>  
         <!-- Scrips for our videoslider -->
         <script src="<?php echo URL; ?>public/js/jquery.bxslider.js"></script>
         <script src="<?php echo URL; ?>public/js/jquery.bxslider.min.js"></script>
