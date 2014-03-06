@@ -41,7 +41,9 @@ class MoviesModel
         // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
         return $query->fetchAll();
     }
-    //This function gets Selected JSON entries from  Youtube API
+    
+    //This function gets Selected JSON entries from Youtube API
+    //If connection come more oftan then YOUTUBE_DELAY allows then the local DB is queried
     //Returns VALID JSON
     public function getAllMoviesFromAPI(){
 

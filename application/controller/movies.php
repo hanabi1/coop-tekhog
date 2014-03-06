@@ -31,11 +31,5 @@ class Movies extends Controller
         header('Content-type: application/json; charset=utf-8');
         echo $movieModel->getAllMoviesFromAPI(); 
     }
-    public function refreshDatabase(){
-        $movieModel = $this->loadModel('MoviesModel');   
-        //header('Content-type: application/json; charset=utf-8');
-        $dateTime = new DateTime;
-        $movieModel->setNewDatabaseRefreshTime($dateTime->format('Y-m-d-H:i:s')); 
-    }
 }
 
