@@ -51,25 +51,20 @@ class MoviesModel
         //Get the current UNIX time (all the seconds from around 1970)
         $currentUnixTime = time();
 
-        //If the database was updated in the last hour the just return the stored values from the database
-        //Instead of getting new data from youtube
-        if(!$currentUnixTime > ($lastRefreshTime + (60*60))){
-            return json_encode($this->movieModel->getAllMoviesFromDB(),JSON_UNESCAPED_UNICODE);
+        //If the database was updated before the defined YOUTUBE_DELAY then 
+        //just return the stored values from the database instead of getting new data from youtube
+        if($currentUnixTime <= ($lastRefreshTime + YOUTUBE_DELAY)){
+            return json_encode($this->getAllMoviesFromDB(),JSON_UNESCAPED_UNICODE);
         }
 
         //Update the last refresh time
         $this->setNewDatabaseRefreshTime($currentUnixTime); 
-
-        //IMPORTANT!! 
-        //Enter CustomersPlaylist ID
-        //do not include "PL" that is usually in the beginning of a Playlist ID
-        $playlistID = 'ZPHv5MPkrmSOpM_-EH8NJrfZivJcduha'; // <- test id!
         
         //Starts cURL 
         $ch = curl_init();
         
         //Sets up the url to get
-        curl_setopt($ch, CURLOPT_URL, 'http://gdata.youtube.com/feeds/api/playlists/' . $playlistID . '?v=2&alt=json');
+        curl_setopt($ch, CURLOPT_URL, 'http://gdata.youtube.com/feeds/api/playlists/' . YOUTUBE_PLAYLIST_ID . '?v=2&alt=json');
         
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -99,19 +94,19 @@ class MoviesModel
         //To the output variable
         for($i=0;$i<$nVideo;$i++) {
 
-            $moviesData[]=$data['feed']['entry'][$i]['title']['$t'];
-            $moviesData[]=$data['feed']['entry'][$i]['author'];
-            $moviesData[]=$data['feed']['entry'][$i]['media$group']['media$description'];
-            $moviesData[]=$data['feed']['entry'][$i]['media$group']['media$content'];
-            $moviesData[]=$data['feed']['entry'][$i]['media$group']['media$credit'];
-            $moviesData[]=$data['feed']['entry'][$i]['media$group']['media$keywords'];
+            $moviesData[$i]=array('title'=> $data['feed']['entry'][$i]['title']['$t']);
+            $moviesData[$i]+=array('author'=> $data['feed']['entry'][$i]['author'][0]['name']['$t']);
+            $moviesData[$i]+=array('description'=> $data['feed']['entry'][$i]['media$group']['media$description']['$t']);
+            $moviesData[$i]+=array('embedlink'=> '//www.youtube.com/embed/' . $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
+            //$moviesData[$i]+=array('content'=> $data['feed']['entry'][$i]['media$group']['media$content']);
+            //$moviesData[$i]+=array('credit'=> $data['feed']['entry'][$i]['media$group']['media$credit']);
         }
         //Return the relevant data as JSON
         return json_encode($moviesData,JSON_UNESCAPED_UNICODE);
     }
 
     public function getLastDatabaseRefresh(){
-        $sql = "SELECT lastupdate FROM system limit 1";
+        $sql = "SELECT lastupdate FROM system where id = 0";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -119,7 +114,8 @@ class MoviesModel
     }
     public function setNewDatabaseRefreshTime($currentTimeStamp){
         $sql = "UPDATE system
-                SET lastupdate = :currentTimeStamp";
+                SET lastupdate = :currentTimeStamp
+                WHERE id=0";
         $query = $this->db->prepare($sql);
 
         return $query->execute(array('currentTimeStamp'=>$currentTimeStamp));
