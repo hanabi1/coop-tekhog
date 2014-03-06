@@ -23,6 +23,7 @@
         <link href="<?php echo URL; ?>public/css/jquery-ui.css" rel="stylesheet">
         <link href="<?php echo URL; ?>public/css/style.css" rel="stylesheet">
         <link href="<?php echo URL; ?>public/css/css.less" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>  
         <!-- our JavaScript -->
         <script src="<?php echo URL; ?>public/js/application.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>  
