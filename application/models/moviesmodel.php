@@ -46,22 +46,7 @@ class MoviesModel
     //If connection come more oftan then YOUTUBE_DELAY allows then the local DB is queried
     //Returns VALID JSON
     public function getAllMoviesFromAPI(){
-
-        //Get the last database update time to prevent spamming of the Youtube API
-        $lastRefreshTime = $this->getLastDatabaseRefresh();    
-        
-        //Get the current UNIX time (all the seconds from around 1970)
-        $currentUnixTime = time();
-
-        //If the database was updated before the defined YOUTUBE_DELAY then 
-        //just return the stored values from the database instead of getting new data from youtube
-        if($currentUnixTime <= ($lastRefreshTime + YOUTUBE_DELAY)){
-            return json_encode($this->getAllMoviesFromDB(),JSON_UNESCAPED_UNICODE);
-        }
-
-        //Update the last refresh time
-        $this->setNewDatabaseRefreshTime($currentUnixTime); 
-        
+       
         //Starts cURL 
         $ch = curl_init();
         
@@ -69,6 +54,7 @@ class MoviesModel
         curl_setopt($ch, CURLOPT_URL, 'http://gdata.youtube.com/feeds/api/playlists/' . YOUTUBE_PLAYLIST_ID . '?v=2&alt=json');
         
         curl_setopt($ch, CURLOPT_HEADER, 0);
+        
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
         //Enables ÅÄÖ
@@ -88,7 +74,7 @@ class MoviesModel
         
         //Count the number of movies in the JSON data
         $nVideo = count($data['feed']['entry']);
-        
+
         //The output variable
         $moviesData = []; 
          
@@ -96,15 +82,52 @@ class MoviesModel
         //To the output variable
         for($i=0;$i<$nVideo;$i++) {
 
-            $moviesData[$i]=array('title'=> $data['feed']['entry'][$i]['title']['$t']);
+            $moviesData[$i]=array('videoid'=> $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
+            $moviesData[$i]+=array('title'=> $data['feed']['entry'][$i]['title']['$t']);
             $moviesData[$i]+=array('author'=> $data['feed']['entry'][$i]['author'][0]['name']['$t']);
             $moviesData[$i]+=array('description'=> $data['feed']['entry'][$i]['media$group']['media$description']['$t']);
-            $moviesData[$i]+=array('embedlink'=> '//www.youtube.com/embed/' . $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
-            //$moviesData[$i]+=array('content'=> $data['feed']['entry'][$i]['media$group']['media$content']);
-            //$moviesData[$i]+=array('credit'=> $data['feed']['entry'][$i]['media$group']['media$credit']);
+            $moviesData[$i]+=array('link'=> '//www.youtube.com/embed/' . $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
         }
         //Return the relevant data as JSON
-        return json_encode($moviesData,JSON_UNESCAPED_UNICODE);
+        return $moviesData;
+    }
+
+    public function cacheMoviesToDB($freshMovies){
+        if(!isset($freshMovies)){
+            return false;
+        }
+        
+        //Clear table
+        //TRUNCATE is faster than DELETE
+        $sql = "TRUNCATE TABLE movies";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+
+        //Insert all the freshmovies into DB
+        //We use placeholders :example that we populate before execution
+        $sql = "INSERT INTO movies (title,description,link,author)
+               VALUES (:title,:description,:link,:author)";
+
+        //Load up the statement we just used
+        $query = $this->db->prepare($sql);
+
+        //Here we tell PDO we will do a lot of queries after one another
+        //so PDO will give us Top Speed!
+        $this->db->beginTransaction();
+
+        //Loop over all the movies in the variable $freshMovies
+        //Send them off one by one in the transaction
+        foreach ($freshMovies as $movie) {
+            $query->execute(array('title'=>$movie['title'],
+                                  'description'=>$movie['description'],
+                                  'link'=>$movie['link'],
+                                  'author'=>$movie['author']
+                            ));
+        }
+
+        //return the status of the transaction
+        return $this->db->commit();
     }
 
     public function getLastDatabaseRefresh(){
