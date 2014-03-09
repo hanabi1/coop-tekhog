@@ -18,6 +18,10 @@ class Controller
     function __construct($pageTitleIn)
     {
         $this->openDatabaseConnection();
+        
+        //Temporary database fix during development
+        fixTablesAndDB($this->db);
+        
         $this->pageTitle=$pageTitleIn;
     }
 

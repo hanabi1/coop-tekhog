@@ -20,7 +20,7 @@ require 'application/config/config.php';
 
 // Include Youtube Delay, Youtube Pĺaylist ID etc
 // After the project moves from git merge this into config.php
-require 'application/config/global_config.php';
+require 'application/config/temp_global_config.php';
 
 // load application class
 require 'application/libs/application.php';

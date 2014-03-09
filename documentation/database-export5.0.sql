@@ -8,8 +8,9 @@ CREATE TABLE IF NOT EXISTS `movies` (
   `description` text COLLATE utf8_bin NOT NULL,
   `link` varchar(60) COLLATE utf8_bin NOT NULL,
   `author` varchar(30) COLLATE utf8_bin NOT NULL,
+  `machinetitle` varchar(60) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=0 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
 
 DROP TABLE IF EXISTS `system`;
 CREATE TABLE IF NOT EXISTS `system` (
@@ -19,4 +20,4 @@ CREATE TABLE IF NOT EXISTS `system` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `system` (`lastupdate`, `id`) VALUES
-(1394204616, 0);
+(1394359483, 0);

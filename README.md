@@ -7,7 +7,10 @@ SCRUM LAPPAR
 *Skapa GIT KONTO (KLAR)
 *Skapa FACEBOOK konto (KLAR)
 
+<--FIX BEFORE RELEASE-->
 
+Added a temp database creating so that nobody has to run all the DB exports again =)
+Remove temporary automatic database creation in global_config.php that is called in controller line 23.
 
 <--FRONT-END-->
 

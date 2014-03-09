@@ -29,11 +29,11 @@ class MoviesModel
         // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
         return $query->fetchAll();
     }
-    public function getMovieFromDB($title)
+    public function getMovieFromDB($machineTitle)
     {
-        $sql = "SELECT * FROM movies where :title = title";
+        $sql = "SELECT * FROM movies where :machinetitle = machinetitle";
         $query = $this->db->prepare($sql);
-        $query->execute(array('title' => $title));
+        $query->execute(array('machinetitle' => $machineTitle));
 
         // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
         // libs/controller.php! If you prefer to get an associative array as the result, then do
@@ -106,8 +106,8 @@ class MoviesModel
 
         //Insert all the freshmovies into DB
         //We use placeholders :example that we populate before execution
-        $sql = "INSERT INTO movies (title,description,link,author)
-               VALUES (:title,:description,:link,:author)";
+        $sql = "INSERT INTO movies (title,machinetitle,description,link,author)
+               VALUES (:title,:machinetitle,:description,:link,:author)";
 
         //Load up the statement we just used
         $query = $this->db->prepare($sql);
@@ -120,6 +120,7 @@ class MoviesModel
         //Send them off one by one in the transaction
         foreach ($freshMovies as $movie) {
             $query->execute(array('title'=>$movie['title'],
+                                  'machinetitle'=>$movie['machinetitle'],
                                   'description'=>$movie['description'],
                                   'link'=>$movie['link'],
                                   'author'=>$movie['author']
