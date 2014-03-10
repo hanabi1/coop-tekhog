@@ -8,9 +8,9 @@ RewriteEngine On
 # Disallows others to look directly into /public/ folder
 Options -Indexes
 
-# When using the script within a sub-folder, put this path here, like /mysubfolder/
+# When using the script within a sub-folder, put this path here, like /plugg/git/coop-tekhog/
 # If your app is in the root of your web folder, then leave it commented out
-RewriteBase /plugg/coop-tekhog/
+RewriteBase /coop-tekhog/
 
 # General rewrite rules
 RewriteCond %{REQUEST_FILENAME} !-d

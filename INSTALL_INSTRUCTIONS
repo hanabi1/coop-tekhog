@@ -21,7 +21,7 @@ NO need to create a DataBase OR run a database dump! =)
 	RewriteBase /git/coop-tekhog/
 
 
-4 . Modify the base path in /application/config/config.php to your own project home folder
+4 . Modify the base path in /application/config/config.php(row 14) to your own project home folder
 	Don't forget the / at the end
 
 	ex:
