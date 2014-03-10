@@ -15,9 +15,9 @@ if (file_exists('vendor/autoload.php')) {
     require 'vendor/autoload.php';
 }
 
+
 // load application config (error reporting etc.)
 require 'application/config/config.php';
-
 // Include Youtube Delay, Youtube Pĺaylist ID etc
 // After the project moves from git merge this into config.php
 require 'application/config/temp_global_config.php';

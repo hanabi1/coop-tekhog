@@ -15,7 +15,7 @@
  *
  * This value should be at least 10min(10min = 600sec) in final stages
  */
-define('YOUTUBE_DELAY', 0);
+define('YOUTUBE_DELAY', 5);
 
 /**
  * Configuration for: YouTube
@@ -24,10 +24,14 @@ define('YOUTUBE_DELAY', 0);
  */
 define('YOUTUBE_PLAYLIST_ID' , 'ZPHv5MPkrmSOpM_-EH8NJrfZivJcduha'); //<- test id!
 
-function fixTablesAndDB($db){
+function isDatabaseComplete(){
 
-	//Temporary fix during development
-	//If database is old or missing, create it hassle-free
+	try {
+    	$db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';', DB_USER, DB_PASS);
+	}catch (PDOException $e) {
+	    echo 'Connection failed in isDatabaseComplete(): ' . $e->getMessage();
+	    return 'ERROR';
+	}
 
 	$query = $db->prepare("SELECT Count(*) FROM INFORMATION_SCHEMA.Columns where TABLE_NAME = 'movies'");
 	$query->execute();
@@ -37,33 +41,50 @@ function fixTablesAndDB($db){
 	$query->execute();
 	$systemTableCount = $query->fetch()['Count(*)'];
 
-	if(1){ //(!$movieTableCount == 6 || !$systemTableCount ==2)
+	if(!$movieTableCount == 6 || !$systemTableCount ==2){
+		return false;
+	}
+	return true;
+}
 
-	    $query = $db->prepare("     USE `".DB_NAME."`;
+function fixTablesAndDB(){
 
-	                                DROP TABLE IF EXISTS `movies`;
-	                                CREATE TABLE IF NOT EXISTS `movies` (
-	                                  `id` int(11) NOT NULL AUTO_INCREMENT,
-	                                  `title` varchar(60) COLLATE utf8_bin NOT NULL,
-	                                  `description` text COLLATE utf8_bin NOT NULL,
-	                                  `link` varchar(60) COLLATE utf8_bin NOT NULL,
-	                                  `author` varchar(30) COLLATE utf8_bin NOT NULL,
-	                                  `machinetitle` varchar(60) COLLATE utf8_bin NOT NULL,
-	                                  PRIMARY KEY (`id`)
-	                                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
-
-	                                DROP TABLE IF EXISTS `system`;
-	                                CREATE TABLE IF NOT EXISTS `system` (
-	                                  `lastupdate` bigint(20) NOT NULL,
-	                                  `id` int(11) NOT NULL,
-	                                  PRIMARY KEY (`id`)
-	                                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-	                                INSERT INTO `system` (`lastupdate`, `id`) VALUES
-	                                (1394359483, 0);
-	                                ");
-	    $query->execute();
-		
+	//Temporary fix during development
+	//If database is old or missing, create it hassle-free
+	
+	try {
+    	$db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';', DB_USER, DB_PASS);
+	}catch (PDOException $e) {
+	    echo 'Connection failed in fixTablesAndDB(): ' . $e->getMessage();
+	    return 'ERROR';
 	}
 
+	$query = $db->prepare("CREATE DATABASE IF NOT EXISTS ". DB_NAME ." DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+							USE ". DB_NAME .";
+							DROP TABLE IF EXISTS `movies`;
+                                CREATE TABLE IF NOT EXISTS `movies` (
+                                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                                  `title` varchar(60) COLLATE utf8_bin NOT NULL,
+                                  `description` text COLLATE utf8_bin NOT NULL,
+                                  `link` varchar(60) COLLATE utf8_bin NOT NULL,
+                                  `author` varchar(30) COLLATE utf8_bin NOT NULL,
+                                  `machinetitle` varchar(60) COLLATE utf8_bin NOT NULL,
+                                  PRIMARY KEY (`id`)
+                                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
+
+                                DROP TABLE IF EXISTS `system`;
+                                CREATE TABLE IF NOT EXISTS `system` (
+                                  `lastupdate` bigint(20) NOT NULL,
+                                  `id` int(11) NOT NULL,
+                                  PRIMARY KEY (`id`)
+                                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+                                INSERT INTO `system` (`lastupdate`, `id`) VALUES
+                                (1394359483, 0);
+                                ");
+	if($query->execute()==true){
+		return 'SUCCESS';
+	}
+	
+	return 'FAILED';
 }

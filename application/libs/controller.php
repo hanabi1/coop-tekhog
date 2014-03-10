@@ -18,10 +18,6 @@ class Controller
     function __construct($pageTitleIn)
     {
         $this->openDatabaseConnection();
-        
-        //Temporary database fix during development
-        fixTablesAndDB($this->db);
-        
         $this->pageTitle=$pageTitleIn;
     }
 
@@ -40,7 +36,22 @@ class Controller
 
         // generate a database connection, using the PDO connector
         // @see http://net.tutsplus.com/tutorials/php/why-you-should-be-using-phps-pdo-for-database-access/
-        $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS, $options);
+        
+        try {
+            $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS, $options);
+        }catch (PDOException $e) {
+            echo 'Connection failed: ' . $e->getMessage() . '<br>';
+            echo 'Repairing missing database...' . fixTablesAndDB() . '!' . '<br>';
+            echo 'Trying connection again...';
+            try {
+                $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS, $options);
+            }catch (PDOException $e) {
+                echo 'FAILED';
+                exit;
+            }
+            echo 'SUCCESS!';
+        }    
+
     }
 
     /**

@@ -10,8 +10,19 @@ class MoviesModel
         try {
             $this->db = $db;
         } catch (PDOException $e) {
-            exit('Database connection could not be established.');
+            fixTablesAndDB();
+            try {
+                $this->db = $db;
+            }catch (PDOException $e) {
+                echo 'FAIL <br>' . $e;
+                exit;
+            }
         }
+    
+        if(!isDatabaseComplete()){
+            fixTablesAndDB();
+        }
+
     }
 
     /**
