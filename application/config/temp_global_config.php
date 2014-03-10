@@ -15,7 +15,7 @@
  *
  * This value should be at least 10min(10min = 600sec) in final stages
  */
-define('YOUTUBE_DELAY', 0);
+define('YOUTUBE_DELAY', 10);
 
 /**
  * Configuration for: YouTube
@@ -37,7 +37,7 @@ function fixTablesAndDB($db){
 	$query->execute();
 	$systemTableCount = $query->fetch()['Count(*)'];
 
-	if(!$movieTableCount == 6 || !$systemTableCount ==2){
+	if(1){ //(!$movieTableCount == 6 || !$systemTableCount ==2)
 
 	    $query = $db->prepare("     USE `".DB_NAME."`;
 

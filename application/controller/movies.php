@@ -72,8 +72,8 @@ class Movies extends Controller
         $freshMovies = $movieModel->getAllMoviesFromAPI(); 
 
         //Generates Machinetitles for the movies.
-        //Populates the 'machinenames' element for each movie in the array.
-        //This is needed so we can access the movies though the URL /root/movies/overvag_nu_detta.
+        //Populates the 'machineTitle' element for each movie in the array.
+        //This is needed so we can access the movies though the URL /root/movies/overvag-nu-denna-titel.
         //
         //Example: 'Överväg Nu Denna Titel!' --> 'overvag-nu-denna-titel'
         $freshMovies = $this->addMachineTitles($freshMovies);
@@ -117,9 +117,9 @@ class Movies extends Controller
             
             //Remove multiple dashes with one dash
             //String now becomes  'overvag-nu-denna-titel'
-            //Valid MachineTitel for URL purposes!
             $movies[$i]['machinetitle'] = preg_replace('/(-)\1+/', '-', $movies[$i]['machinetitle']);
 
+            //Valid MachineTitel for URL purposes!
         }
         //Return movie array with valid Machinenames!
         return $movies;
