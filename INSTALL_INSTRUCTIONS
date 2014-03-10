@@ -1,33 +1,42 @@
 INSTALL INSTRUCTIONS
 ====================
 
-1. Move config.php from the folder /documentation to /application/config/
+1. Rename config.php(ta-bort-denna-parantes) to config.php in the folder /application/config/
 
-2 . Move /documentation/.htaccess(ta-bort-denna-parantes) to the root
+2 . Rename /.htaccess(ta-bort-denna-parantes) to .htaccess with sublimeText
 
-3. Rename it to .htaccess and change base path to yours.
+	Right click it in sublime and rename.
+	For some reason you cant rename it in the explorer window
+
+
+3. Change the basepath in /.htaccess(row 13) to your own path
+	Don't forget the '/' in the beginning AND the end
 
 	ex. 
-	//RewriteBase /plugg/git/coop-tekhog/
+	RewriteBase /git/coop-tekhog/
 
-4 . Modify the base path in config.php to your own project home folder
-	WARNING don't forget the / at the end
+4 . Modify the base path in /application/config/config.php to your own project home folder
+	Don't forget the / at the end
 
 	ex:
-    //define('URL', 'http://localhost/samhalls_sar/');
+    define('URL', 'http://localhost/samhalls_sar/');
 
-5. Input your DB password in config.php.
+5. Input your database name in config.php ('samhalls_sar' is recomended)
+
+   Input your DB password in config.php.
    It's usually blank...
    
    ex:
    //define('DB_PASS', '');
 
-6. Create a DB called 'samhalls_sar' (utf-8) with Sequel Pro or Heidi etc
- 
+6. Create a DB called 'samhalls_sar' with Sequel Pro/Heidi/phpMyAdmin etc
 
-7. Copy the DB export's SQL into the SQL query window and...PRESTO!
+   No need to run a database dump!
 
-   Congrats! It should now work!
+
+If you encounter any problems, delete the DB samhalls_sar and create it again.
+
+Then just run the website as normal it will create all the tables.
 
 
 There is also a very good tutorial on this MVC in the folder /_tutorial/
