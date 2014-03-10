@@ -37,7 +37,7 @@ function fixTablesAndDB($db){
 	$query->execute();
 	$systemTableCount = $query->fetch()['Count(*)'];
 
-	if(1){ //(!$movieTableCount == 6 || !$systemTableCount ==2)
+	if(!$movieTableCount == 6 || !$systemTableCount ==2){
 
 	    $query = $db->prepare("     USE `".DB_NAME."`;
 
