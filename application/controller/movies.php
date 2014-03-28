@@ -14,6 +14,25 @@ class Movies extends Controller
         require 'application/views/_templates/footer.php';
     }
 
+    public function title($movieTitle = '')
+    {
+
+        $movieModel = $this->loadModel('MoviesModel');
+        $result = $movieModel->getMovieFromDB($movieTitle);
+        if(!count($result)){
+            header('location: ' . URL);
+        }
+        var_dump($result);
+        // load views. within the views we can echo out $songs and $amount_of_songs easily
+        echo $this->dressTemplate('/_templates/head', array('title'=> $this->pageTitle));        
+        require 'application/views/_templates/header.php';
+        require 'application/views/home/index.php';
+        require 'application/views/_templates/footer.php';
+    }
+
+
+
+
     public function getallmovies()
     {
         header('Content-Type: application/json; charset=utf-8');        
