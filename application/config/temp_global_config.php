@@ -22,7 +22,7 @@ define('YOUTUBE_DELAY', 5);
  * Enter CustomersPlaylist ID
  * Do not include "PL" that is usually in the beginning of a Playlist ID
  */
-define('YOUTUBE_PLAYLIST_ID' , 'ZPHv5MPkrmSOpM_-EH8NJrfZivJcduha'); //<- test id!
+define('YOUTUBE_PLAYLIST_ID' , 'PLETsGmQ-25bTg_X1BPDyIU_zHPn2dm0XF'); //<- test id!
 
 function isDatabaseComplete(){
 
