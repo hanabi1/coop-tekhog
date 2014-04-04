@@ -4,13 +4,7 @@
    <hr>
 </div>
 
-<div id="page2">
-  <a id="filmskaparna"></a>
-   <div class="wrap">
-  		<div id="bx-pager">
-		</div>
-	</div>
-</div>
+
 
 <div id="page3">
   <a id="filmerna"></a>
@@ -20,6 +14,14 @@
 		</ul>
 
 	</div>
+</div>
+
+<div id="page2">
+  <a id="filmskaparna"></a>
+   <div class="wrap">
+      <div id="bx-pager">
+    </div>
+  </div>
 </div>
 
 <div id="page4">
