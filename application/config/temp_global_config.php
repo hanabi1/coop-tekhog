@@ -15,7 +15,7 @@
  *
  * This value should be at least 10min(10min = 600sec) in final stages
  */
-define('YOUTUBE_DELAY', 5);
+define('YOUTUBE_DELAY', 120);
 
 /**
  * Configuration for: YouTube

@@ -76,6 +76,7 @@
 		slideWidth: 0,
 
 		// CALLBACKS
+		//function($slideElement, oldIndex, newIndex){ // your code here }
 		onSliderLoad: function() {},
 		onSlideBefore: function() {},
 		onSlideAfter: function() {},
