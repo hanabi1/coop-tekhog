@@ -1,10 +1,6 @@
 <div id="page1">
    <a id="info"></a>
-   Samhällssår
-   <hr>
 </div>
-
-
 
 <div id="page3">
   <a id="filmerna"></a>
