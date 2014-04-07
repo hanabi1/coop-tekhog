@@ -1,7 +1,7 @@
 body {
   max-width: 100%;
   background-image:url("../img/image.png");
-  background-repeat:no-repeat;
+  background-repeat:repeat-x;
   background-size:contain;
   background-position:top;
 }
