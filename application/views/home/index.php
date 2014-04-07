@@ -1,8 +1,4 @@
-<div id="page1">
-   <a id="info"></a>
-</div>
-
-<div id="page3">
+<div id="movies">
   <a id="filmerna"></a>
     <div class="wrap">
 		<ul class="bxslider">
@@ -12,7 +8,7 @@
 	</div>
 </div>
 
-<div id="page2">
+<div id="moviemakers">
   <a id="filmskaparna"></a>
    <div class="wrap">
       <div id="bx-pager">
@@ -20,7 +16,6 @@
   </div>
 </div>
 
-<div id="page4">
-  <a id="kontakt"></a>
-  Contact content goes here
+<div id="information">
+   <a id="info"></a>
 </div>
