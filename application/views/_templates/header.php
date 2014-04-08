@@ -1,8 +1,16 @@
-  <div id="nav">
-     <ul>
-         <li><a href="#filmerna">Filmerna</a></li>
-         <li><a href="#filmskaparna">Filmskaparna</a></li>
-         <li><a href="#info">Information</a></li>
-         <li><a href="#kontakt">Kontakt</a></li>
-     </ul>
-  </div>
+	<header> 
+
+		<nav>
+		     <ul>
+		     	<li><a href="#movies">Filmerna</a></li>
+		        <li><a href="#moviemakers">Filmskaparna</a></li>
+		        <li><a href="#information">Information</a></li>
+		        <li><a href="#contact">Kontakt</a></li>
+		     </ul>
+	  	</nav>
+
+		<div class="banner">
+			<img src="public/img/image.png">
+		</div>
+
+	</header>

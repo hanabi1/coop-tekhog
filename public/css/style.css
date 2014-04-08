@@ -1,56 +1,131 @@
+/* HTML, BODY & COMMONS
+---------------------------------------------------------*/
+
+/* Hannele, PLZ FIX!!!! */
+@font-face {
+    font-family: BebasNeue Regular;
+    src: url("BebasNeue Regular.ttf");
+}
+
+html { 
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+} 
+
 body {
   max-width: 100%;
-  background-image:url("../img/image.png");
-  background-repeat:repeat-x;
-  background-size:contain;
-  background-position:top;
   background-color: #33373c;
 }
+
 img {
   max-width: 100%;
 }
-#nav li{
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* NAVIGATION
+---------------------------------------------------------*/
+
+nav {
+  width: 100%;
+  clear: both;
+  background-color: #33373c;
+  padding: 15px 0 10px 20px;
+}
+
+nav li {
   list-style: none;
   display: inline-block;
-  font-family: 'Rosarivo', serif; 
-  margin: 10px;
+  font-family: "BebasNeue Regular", Helvetica, sans-serif; 
+  margin-right: 15px;
+  line-height: 30px;
+  text-align: center;
 }
-#nav {
-  width: 100%;
-  background-color: #33373c;
-  clear: both;
-}
-a {
+
+nav a {
   text-decoration: none;
   font-size: 20px;
-  color: #FFF;
+  font-family: "BebasNeue Regular", Helvetica, sans-serif;
 }
-#information {
-  height: 500px;
-  float: none;
+
+nav a:hover {
+  border-bottom: 1px solid #fff;
+}
+
+/* HEADER BANNER
+---------------------------------------------------------*/
+
+.banner {
+    position: relative;
+}
+
+.banner .img{
+    width: 100%;
+    height: auto;
+}
+
+/* CONTENT
+---------------------------------------------------------*/
+
+.movies-box {
+  width: 100%;
+  padding: 40px 0 40px 0; 
+  background-color: ##33373c;
+  color: #fff;
+  font-family: "BebasNeue Regular", Helvetica, sans-serif;
+}
+
+.moviemakers-box {
+  width: 100%;
+  padding: 40px 0 40px 0; 
+  background-color: #47494e;
+  color: #fff;
+  font-family: "BebasNeue Regular", Helvetica, sans-serif;
+}
+
+.info-box {
   clear: both;
-  text-align: center;
-  margin-top: -18px;
-  font-size: 100px;
-}
-#moviemakers {
-  background-color: #4d4d4d;
-}
-#movies {
   width: 100%;
-  background-color: #363636;
-  padding: 100px 0 0 0; 
-}
-#contact {
-  width: 100%;
-  height: 300px;
-  background-color: #fff;
-}
-/* Filmer? */
-.wrap  p{
+  padding: 40px 0 40px 0; 
+  color: #fff;
   margin: 0 auto;
+  text-align: center;
+  font-family: "BebasNeue Regular", Helvetica, sans-serif;
 }
-.wrap{
-  width:75%;
-  margin:40px auto 40px ;
+
+.contact-box {
+  clear: both;
+  width: 100%;
+  padding: 40px 0 40px 0; 
+  background-color: #fff;
+  text-align: center;
+  font-family: "BebasNeue Regular", Helvetica, sans-serif;
+  color: #000;
+}
+
+/* MOVIE WRAPPER?
+---------------------------------------------------------*/
+
+.wrap {
+  width: 75%;
+  margin: 40px auto 40px;
+}
+
+.wrap p {
+  margin: 0 auto;
+  font-family: "BebasNeue Regular", Helvetica, sans-serif;
+  color: #fff;
+  padding: 2px 0 8px 0;
+  font-size: 16px
+}
+
+.wrap p:hover {
+  opacity: 0.55;
 }

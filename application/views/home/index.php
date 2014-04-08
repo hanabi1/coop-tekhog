@@ -1,21 +1,19 @@
-<div id="movies">
-  <a id="filmerna"></a>
-    <div class="wrap">
-		<ul class="bxslider">
-	  		
-		</ul>
-
-	</div>
+<div class="movies-box" id="movies"> 
+    <div class="wrap"> 
+      Filmerna
+    <ul class="bxslider">       
+    </ul>
+  </div>
 </div>
 
-<div id="moviemakers">
-  <a id="filmskaparna"></a>
-   <div class="wrap">
+<div class="moviemakers-box" id="moviemakers">
+     <div class="wrap"> 
+      Filmskaparna
       <div id="bx-pager">
     </div>
   </div>
 </div>
 
-<div id="information">
-   <a id="info"></a>
+<div class="info-box" id="information">
+   Information
 </div>
