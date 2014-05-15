@@ -30,7 +30,7 @@ a:hover {
 nav {
   width: 100%;
   clear: both;
-  background-color: #a8b0ab;
+  background-color: #8b9c92;
   padding: 10px 0 10px 20px;
   position: fixed;
   z-index: 9999;
@@ -42,7 +42,7 @@ nav {
   padding-right: 30px;
 }
 /* #e4eeea */
-
+/* a8b0ab */
 nav li {
   list-style: none;
   display: inline-block;
