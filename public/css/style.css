@@ -65,6 +65,7 @@ nav a {
 
 .banner {
     position: relative;
+    margin-bottom: -2px;
 }
 
 .banner img{
