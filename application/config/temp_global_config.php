@@ -21,8 +21,10 @@ define('YOUTUBE_DELAY', 5);
  * Configuration for: YouTube
  * Enter CustomersPlaylist ID
  * Do not include "PL" that is usually in the beginning of a Playlist ID
+ *
+ * LIVE PLAYLIST ID: SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx
  */
-define('YOUTUBE_PLAYLIST_ID' , 'SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx'); //<- test id!
+define('YOUTUBE_PLAYLIST_ID' , 'PLETsGmQ-25bTg_X1BPDyIU_zHPn2dm0XF'); //<- test id!
 
 function isDatabaseComplete(){
 
