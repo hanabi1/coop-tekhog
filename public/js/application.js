@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 function renderData (movies) {
   // Loop to add stuff from JSON-data (movies variable) to the DOM.
-	for (var i = 0;i < movies.length;i++) {
+	for (var i = 0;i < 4;i++) {
 		console.log(movies[i].id);
 		// Add the movie links to our div with class bxslider.
 
