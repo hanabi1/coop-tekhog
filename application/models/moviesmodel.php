@@ -30,7 +30,7 @@ class MoviesModel
      */
     public function getAllMoviesFromDB()
     {
-        $sql = "SELECT * FROM movies";
+        $sql = "SELECT * FROM movies ORDER BY RAND()";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -42,7 +42,7 @@ class MoviesModel
     }
     public function getMovieFromDB($machineTitle)
     {
-        $sql = "SELECT * FROM movies where :machinetitle = machinetitle";
+        $sql = "SELECT * FROM movies where :machinetitle = machinetitle ";
         $query = $this->db->prepare($sql);
         $query->execute(array('machinetitle' => $machineTitle));
 
