@@ -85,15 +85,17 @@ nav a {
 .moviemakers-box {
   width: 100%;
   padding: 40px 0 40px 0; 
-  background-color: #47494e;
+  background-color: #5c625f;
   color: #fff;
+  margin-top: -60px;
 }
 
 .info-box {
   clear: both;
   width: 100%;
   padding: 40px 0 40px 0; 
-  color: #fff;
+  color: #000;
+  background-color: #bdcbc3;
   margin: 0 auto;
   text-align: center;
 }
@@ -102,7 +104,7 @@ nav a {
   clear: both;
   width: 100%;
   padding: 40px 0 40px 0; 
-  background-color: #fff;
+  background-color: #d4e2da;
   text-align: center;
   color: #000;
 }
