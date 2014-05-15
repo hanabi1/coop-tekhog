@@ -1,3 +1,4 @@
+
 /**
  * BxSlider v4.0 - Fully loaded, responsive content slider
  * http://bxslider.com
@@ -30,10 +31,6 @@
 ===================================*/
 
 .bx-wrapper .bx-viewport {
-	-moz-box-shadow: 0 0 5px #ccc;
-	-webkit-box-shadow: 0 0 5px #ccc;
-	box-shadow: 0 0 5px #ccc;
-	border: solid #fff 1px;
 	left: -5px;
 	background: #fff;
 }
@@ -122,7 +119,7 @@
 	width: 32px;
 	height: 32px;
 	text-indent: -9999px;
-	z-index: 9999;
+	z-index: 9998;
 }
 
 .bx-wrapper .bx-controls-direction a.disabled {

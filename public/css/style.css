@@ -1,12 +1,5 @@
 /* HTML, BODY & COMMONS
 ---------------------------------------------------------*/
-
-/* Hannele, PLZ FIX!!!! */
-@font-face {
-    font-family: BebasNeue Regular;
-    src: url("BebasNeue Regular.ttf");
-}
-
 html { 
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -15,6 +8,7 @@ html {
 body {
   max-width: 100%;
   background-color: #33373c;
+  font-family: 'Open Sans', sans-serif;
 }
 
 img {
@@ -36,27 +30,32 @@ a:hover {
 nav {
   width: 100%;
   clear: both;
-  background-color: #33373c;
-  padding: 15px 0 10px 20px;
+  background-color: #a8b0ab;
+  padding: 10px 0 10px 20px;
+  position: fixed;
+  z-index: 9999;
+  box-shadow: 0px 3px 5px #4a524d;
+  word-spacing: 40px;
+  letter-spacing: 1px;
+  padding-left: 30px;
 }
+/* #e4eeea */
 
 nav li {
   list-style: none;
   display: inline-block;
-  font-family: "BebasNeue Regular", Helvetica, sans-serif; 
+  font-family: 'Open Sans', sans-serif;
   margin-right: 15px;
   line-height: 30px;
   text-align: center;
+  color: #000;
 }
 
 nav a {
   text-decoration: none;
   font-size: 20px;
-  font-family: "BebasNeue Regular", Helvetica, sans-serif;
-}
-
-nav a:hover {
-  border-bottom: 1px solid #fff;
+  font-family: 'Open Sans', sans-serif;
+  color: #f1f1f1;
 }
 
 /* HEADER BANNER
@@ -66,7 +65,7 @@ nav a:hover {
     position: relative;
 }
 
-.banner .img{
+.banner img{
     width: 100%;
     height: auto;
 }
@@ -76,10 +75,8 @@ nav a:hover {
 
 .movies-box {
   width: 100%;
-  padding: 40px 0 40px 0; 
-  background-color: ##33373c;
+  background-color: #101010;
   color: #fff;
-  font-family: "BebasNeue Regular", Helvetica, sans-serif;
 }
 
 .moviemakers-box {
@@ -87,7 +84,6 @@ nav a:hover {
   padding: 40px 0 40px 0; 
   background-color: #47494e;
   color: #fff;
-  font-family: "BebasNeue Regular", Helvetica, sans-serif;
 }
 
 .info-box {
@@ -97,7 +93,6 @@ nav a:hover {
   color: #fff;
   margin: 0 auto;
   text-align: center;
-  font-family: "BebasNeue Regular", Helvetica, sans-serif;
 }
 
 .contact-box {
@@ -106,7 +101,6 @@ nav a:hover {
   padding: 40px 0 40px 0; 
   background-color: #fff;
   text-align: center;
-  font-family: "BebasNeue Regular", Helvetica, sans-serif;
   color: #000;
 }
 
@@ -114,13 +108,12 @@ nav a:hover {
 ---------------------------------------------------------*/
 
 .wrap {
-  width: 75%;
-  margin: 40px auto 40px;
+  width: 100%;
+  margin: 0px auto 0px;
 }
 
 .wrap p {
   margin: 0 auto;
-  font-family: "BebasNeue Regular", Helvetica, sans-serif;
   color: #fff;
   padding: 2px 0 8px 0;
   font-size: 16px

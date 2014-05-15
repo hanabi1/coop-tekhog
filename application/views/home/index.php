@@ -1,13 +1,12 @@
 <div class="movies-box" id="movies"> 
     <div class="wrap"> 
-      Filmerna
     <ul class="bxslider">       
     </ul>
   </div>
 </div>
 
 <div class="moviemakers-box" id="moviemakers">
-     <div class="wrap"> 
+     <div class="wrapmovie"> 
       Filmskaparna
       <div id="bx-pager">
     </div>
