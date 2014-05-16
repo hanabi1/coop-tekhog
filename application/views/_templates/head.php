@@ -49,7 +49,7 @@
         
         <!-- Videoslider script -->
         <script src="<?php echo URL; ?>public/js/jquery.bxslider.js"></script>
-        <script src="<?php echo URL; ?>public/js/jquery.bxslider.min.js"></script>
+        <!--<script src="<?php echo URL; ?>public/js/jquery.bxslider.min.js"></script>-->
         <script src="<?php echo URL; ?>public/js/jquery.easing.1.3.js"></script>
         <script src="<?php echo URL; ?>public/js/jquery.fitvids.js"></script>
 

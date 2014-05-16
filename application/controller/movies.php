@@ -139,9 +139,5 @@ class Movies extends Controller
         //Return movie array with valid Machinenames!
         return $movies;
     }
-
-    private function updateSiteMap(){
-        
-    }
 }
 

@@ -8,7 +8,15 @@ $(document).ready(function(){
 		cache: false,
 		// If successfull, run our renderData function and send the data (a JSON-object) to it.
     success:function (data) {
+    		//Adds the movies to the slider
+    		//Adds the links
 			renderData(data);
+			
+			//Gets the machineTitle from the link
+			var machineTitle = getMachineTitleFromLink();
+		
+			//Loads the description from the Machine Title
+			loadDescription(machineTitle);	
 		},
     // If error.
 		error:function(errorData) {
@@ -26,7 +34,7 @@ function renderData (movies) {
 		$('.bxslider').append(
 			
 			// We give the thumbnail img a #id that is the same as the Youtube ID.
-			'<li class="slide"><img id="' + movies[i].link + '" src="http://img.youtube.com/vi/' + movies[i].link + '/maxresdefault.jpg" width="100%" height="400px"></li>'
+			'<li class="slide"><img id="' + movies[i].link + '" src="http://img.youtube.com/vi/' + movies[i].link + '/hqdefault.jpg" width="100%" height="400px"></li>'
 		);
 		
 		//When the thumbnail is clicked...
@@ -45,10 +53,7 @@ function renderData (movies) {
 		// Add the titles+author to div with ID bx-pager.
 		$('#bx-pager').append(
 			'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
-		);
-
-		//When link is clicked load description
-		loadDescriptionOnLinkClick(movies[i].machinetitle);
+		);	
 	};
 
 	videoSlider();
@@ -66,6 +71,12 @@ function videoSlider(){
 // makes the anchor scroll on the page smooth as silk
 function clickhandler () {
 	$('a').click(function(){
+		
+		//Get the movie title from the links ID and call loadDescription()
+		var machineTitle = $(this).attr('id')
+		loadDescription(machineTitle);
+
+		//Slide the correct movie into place
 		$('html, body').animate({
 			scrollTop: $( $(this).attr('href') ).offset().top
 		}, 600);
@@ -73,30 +84,49 @@ function clickhandler () {
 	});
 }
 
-function loadDescriptionOnLinkClick(machineTitle){
+//Loads the correct description and fades it in
+function loadDescription(machineTitle){
 
-	$('#' + machineTitle).click(function(){
+	if(typeof machineTitle === 'undefined' || !machineTitle){
+		return false;
+	}
+	console.log('loadDescription got param data: ' + machineTitle )
 
-		var description = 'Den här filmen har en beskrivning. Punkt.';		
-		var movieTitle = $(this).attr('id');
+	var description = '<p>Ingen beskrivning hittades</p>';		
 
-		$.ajax({
-			// Get all movies from our database.
-		    url:"movies/getmovie/" + movieTitle,
-				dataType:"json",
-				cache: false,
-			// If successfull, run our renderData function and send the data (a JSON-object) to it.
-		    success:function (data) {
+	$.ajax({
+		// Get all movies from our database.
+	    url:"movies/getmovie/" + machineTitle,
+			dataType:"json",
+			cache: false,
+		// If successfull, run our renderData function and send the data (a JSON-object) to it.
+	    success:function (data) {
+	    	//If ajax call was successfull but no/wrong data was returned show error
+	    	if(typeof data[0] === 'undefined' || !data[0]){
+		    	$('#information > p').fadeOut(function(){
+					$('#information > p').html('<p style="display:none">Ingen beskrivning hittades</p>');
+					$('#information > p').fadeIn();		    		
+		    	})	
+	    	//Everything good! Show description
+	    	}else{
 		    	$('#information > p').fadeOut(function(){
 					$('#information').html('<p style="display:none">' + data[0]['description'] + '</p>');
 					$('#information > p').fadeIn();		    		
 		    	})
-			},
-		    // If error.
-			error:function(errorData) {
-				console.log("There seems to be an error fetching the data." + errorData.error);
-				$('#information').html('<p>Ingen beskrivning hittades</p>');
-			}
-		});	
-	});
+	    	}	
+		},
+	    // If error.
+		error:function(errorData) {
+			console.log("There seems to be an error fetching the description. " + errorData.error);
+	    	$('#information > p').fadeOut(function(){
+				$('#information > p').html('<p style="display:none">Ingen beskrivning hittades</p>');
+				$('#information > p').fadeIn();		    		
+	    	})			
+		}
+	});	
+}
+
+//Returns the YoutubeID of the video currently visible in the slider. 
+function getMachineTitleFromLink(){
+	return $('#bx-pager > a.active').attr('id');
 }

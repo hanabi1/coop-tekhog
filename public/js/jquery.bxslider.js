@@ -1194,6 +1194,12 @@
 			if (!slider.settings.infiniteLoop && slider.active.last) return;
 			var pagerIndex = parseInt(slider.active.index) + 1;
 			el.goToSlide(pagerIndex, 'next');
+
+			//Gets the machineTitle from the link
+			var machineTitle = getMachineTitleFromLink();
+			
+			//Loads the description from the Machine Title
+			loadDescription(machineTitle);
 		}
 
 		/**
@@ -1204,6 +1210,13 @@
 			if (!slider.settings.infiniteLoop && slider.active.index == 0) return;
 			var pagerIndex = parseInt(slider.active.index) - 1;
 			el.goToSlide(pagerIndex, 'prev');
+		
+			//Gets the machineTitle from the link
+			var machineTitle = getMachineTitleFromLink();
+			
+			//Loads the description from the Machine Title
+			loadDescription(machineTitle);
+
 		}
 
 		/**

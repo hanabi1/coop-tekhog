@@ -79,7 +79,7 @@ class MoviesModel
          
         //Take all the raw JSON data and decode it
         $data = json_decode($output,true);
-        
+
         //Count the number of movies in the JSON data
         $nVideo = count($data['feed']['entry']);
 
