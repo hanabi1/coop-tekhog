@@ -44,8 +44,11 @@ function renderData (movies) {
 		});
 		// Add the titles+author to div with ID bx-pager.
 		$('#bx-pager').append(
-			'<a data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
+			'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
 		);
+
+		//When link is clicked load description
+		loadDescriptionOnLinkClick(movies[i].machinetitle);
 	};
 
 	videoSlider();
@@ -67,5 +70,31 @@ function clickhandler () {
 			scrollTop: $( $(this).attr('href') ).offset().top
 		}, 600);
 		return false;
+	});
+}
+
+function loadDescriptionOnLinkClick(machineTitle){
+
+	$('#' + machineTitle).click(function(){
+
+		var description = 'Den här filmen har en beskrivning. Punkt.';		
+		var movieTitle = $(this).attr('id');
+
+		$.ajax({
+			// Get all movies from our database.
+		    url:"movies/getmovie/" + movieTitle,
+				dataType:"json",
+				cache: false,
+			// If successfull, run our renderData function and send the data (a JSON-object) to it.
+		    success:function (data) {
+				console.log(data);
+				$('#information').html('<p>' + data[0]['description'] + '</p>');
+			},
+		    // If error.
+			error:function(errorData) {
+				console.log("There seems to be an error fetching the data." + errorData.error);
+				$('#information').html('<p>Ingen beskrivning hittades</p>');
+			}
+		});	
 	});
 }

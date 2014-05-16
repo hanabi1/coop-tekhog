@@ -22,16 +22,12 @@ class Movies extends Controller
         if(!count($result)){
             header('location: ' . URL);
         }
-        var_dump($result);
-        // load views. within the views we can echo out $songs and $amount_of_songs easily
+
         echo $this->dressTemplate('/_templates/head', array('title'=> $this->pageTitle));        
         require 'application/views/_templates/header.php';
         require 'application/views/home/index.php';
         require 'application/views/_templates/footer.php';
     }
-
-
-
 
     public function getallmovies()
     {

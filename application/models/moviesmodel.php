@@ -34,10 +34,7 @@ class MoviesModel
         $query = $this->db->prepare($sql);
         $query->execute();
 
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // libs/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change libs/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
+        // fetchAll() is the PDO method that gets all result rows.
         return $query->fetchAll();
     }
     public function getMovieFromDB($machineTitle)
@@ -96,7 +93,7 @@ class MoviesModel
             $moviesData[$i]=array('videoid'=> $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
             $moviesData[$i]+=array('title'=> $data['feed']['entry'][$i]['title']['$t']);
             $moviesData[$i]+=array('author'=> $data['feed']['entry'][$i]['author'][0]['name']['$t']);
-            $moviesData[$i]+=array('description'=> 'temp description');
+            $moviesData[$i]+=array('description'=> $data['feed']['entry'][$i]['media$group']['media$description']['$t']);
             $moviesData[$i]+=array('link'=> $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
         }
         //Return the relevant data as JSON
