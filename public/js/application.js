@@ -87,8 +87,10 @@ function loadDescriptionOnLinkClick(machineTitle){
 				cache: false,
 			// If successfull, run our renderData function and send the data (a JSON-object) to it.
 		    success:function (data) {
-				console.log(data);
-				$('#information').html('<p>' + data[0]['description'] + '</p>');
+		    	$('#information > p').fadeOut(function(){
+					$('#information').html('<p style="display:none">' + data[0]['description'] + '</p>');
+					$('#information > p').fadeIn();		    		
+		    	})
 			},
 		    // If error.
 			error:function(errorData) {
