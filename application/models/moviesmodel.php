@@ -97,7 +97,7 @@ class MoviesModel
             $moviesData[$i]+=array('title'=> $data['feed']['entry'][$i]['title']['$t']);
             $moviesData[$i]+=array('author'=> $data['feed']['entry'][$i]['author'][0]['name']['$t']);
             $moviesData[$i]+=array('description'=> 'temp description');
-            $moviesData[$i]+=array('link'=> '//www.youtube.com/embed/' . $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t'] . '?modestbranding=1');
+            $moviesData[$i]+=array('link'=> $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t'] . '?modestbranding=1');
         }
         //Return the relevant data as JSON
         return $moviesData;

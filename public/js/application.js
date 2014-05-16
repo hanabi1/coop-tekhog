@@ -25,7 +25,7 @@ function renderData (movies) {
 		// Add the movie links to our div with class bxslider.
 
 		$('.bxslider').append(
-			'<li class="slide"><iframe width="560" height="315" src="'+ movies[i].link +'"frameborder="0" allowfullscreen></iframe></li>'
+			'<li class="slide"><iframe width="560" height="315" src="//www.youtube.com/embed/'+ movies[i].link +'"frameborder="0" allowfullscreen></iframe></li>'
 		);
 		// Add the titles+author to div with ID bx-pager.
 		$('#bx-pager').append(
