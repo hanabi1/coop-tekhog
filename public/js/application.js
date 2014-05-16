@@ -20,13 +20,28 @@ $(document).ready(function(){
 
 function renderData (movies) {
   // Loop to add stuff from JSON-data (movies variable) to the DOM.
-	for (var i = 0;i < 4;i++) {
-		console.log(movies[i].id);
-		// Add the movie links to our div with class bxslider.
-
+	for (var i = 0;i < movies.length;i++) {
+		
+		// Add only the thumbnail (not the actuall movie) to our div with class bxslider.
 		$('.bxslider').append(
-			'<li class="slide"><iframe width="560" height="315" src="//www.youtube.com/embed/'+ movies[i].link +'"frameborder="0" allowfullscreen></iframe></li>'
+			
+			// We give the thumbnail img a #id that is the same as the Youtube ID.
+			'<li class="slide"><img class="play-icon" src="public/img/play.png"/><img id="' + movies[i].link + '" src="http://img.youtube.com/vi/' + movies[i].link + '/mqdefault.jpg" width="100%"></li>'
 		);
+		
+		//When the thumbnail is clicked...
+		//The thumbnails id looks like this after concatenation: #4Vvd875V (hashtag + YouTube ID)
+		$('#' + movies[i].link).click(function(){
+			
+			//The movies variable in renderData() is no longer available when this thumbnail is clicked.
+			//So we get the Youtube video ID from the ID Hashtag instead of the movie variable! 
+			var videoID = $(this).attr('id');
+			
+			//(this). returns the <img> that was clicked. We cant put the video into the image....
+			//So we replace the content in the parent of <img> ie the <li>!
+			$(this).parent().html('<iframe width="100%" height="600px"src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1;autoplay=1" frameborder="0" allowfullscreen></iframe>');
+			
+		});
 		// Add the titles+author to div with ID bx-pager.
 		$('#bx-pager').append(
 			'<a data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
