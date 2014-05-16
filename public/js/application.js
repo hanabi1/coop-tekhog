@@ -26,7 +26,7 @@ function renderData (movies) {
 		$('.bxslider').append(
 			
 			// We give the thumbnail img a #id that is the same as the Youtube ID.
-			'<li class="slide"><img class="play-icon" src="public/img/play.png"/><img id="' + movies[i].link + '" src="http://img.youtube.com/vi/' + movies[i].link + '/mqdefault.jpg" width="100%"></li>'
+			'<li class="slide"><img id="' + movies[i].link + '" src="http://img.youtube.com/vi/' + movies[i].link + '/mqdefault.jpg" width="100%" height="400px"></li>'
 		);
 		
 		//When the thumbnail is clicked...
@@ -39,7 +39,7 @@ function renderData (movies) {
 			
 			//(this). returns the <img> that was clicked. We cant put the video into the image....
 			//So we replace the content in the parent of <img> ie the <li>!
-			$(this).parent().html('<iframe width="100%" height="600px"src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1;autoplay=1" frameborder="0" allowfullscreen></iframe>');
+			$(this).parent().html('<iframe width="100%" height="400px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1;autoplay=1" frameborder="0" allowfullscreen></iframe>');
 			
 		});
 		// Add the titles+author to div with ID bx-pager.
