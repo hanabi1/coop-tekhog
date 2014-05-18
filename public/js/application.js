@@ -51,9 +51,18 @@ function renderData (movies) {
 			
 		});
 		// Add the titles+author to div with ID bx-pager.
-		$('#bx-pager').append(
-			'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
-		);	
+if(i < 5) {
+
+		$('.left-column').append(
+			'<a data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
+		);
+      } 
+	    else {
+			$('.right-column').append(
+					'<a data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
+			);
+	    }
+
 	};
 
 	videoSlider();

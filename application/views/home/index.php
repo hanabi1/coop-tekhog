@@ -9,7 +9,12 @@
   <div class="wrapmovie"> 
     <h3>Filmskaparna</h3>
     <div id="bx-pager">
-    </div>
+
+          <div class="right-column">
+      </div>
+      <div class="left-column">
+      </div>
+        </div>
   </div>
 </div>
 

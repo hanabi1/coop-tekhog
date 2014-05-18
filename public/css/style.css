@@ -93,6 +93,16 @@ nav a {
 .bxslider > .slide{
   background-color: black;
 }
+.left-column {
+  float: left;
+  background: red;
+
+}
+
+.right-column {
+    background: #ccc;
+    float: right;
+}
 .movies-box {
   width: 100%;
   background-color: #101010;
