@@ -93,16 +93,24 @@ nav a {
 .bxslider > .slide{
   background-color: black;
 }
+
+.column-wrapper {
+  float: left;
+  width: 100%;
+}
+
 .left-column {
   float: left;
-  background: red;
-
+  width: 50%;
+  padding: 0 40px 0 0;
 }
 
 .right-column {
-    background: #ccc;
-    float: right;
+  float: left;
+  width: 50%; 
+  padding: 0 0 0 20px;
 }
+
 .movies-box {
   width: 100%;
   background-color: #101010;
@@ -115,6 +123,7 @@ nav a {
   background-color: #5c625f;
   color: #fff;
   margin-top: -60px;
+  border: 1px solid red;
 }
 
 .info-box {

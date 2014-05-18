@@ -7,15 +7,22 @@
 
 <div class="moviemakers-box" id="moviemakers">
   <div class="wrapmovie"> 
-    <h3>Filmskaparna</h3>
+
     <div id="bx-pager">
 
-          <div class="right-column">
-      </div>
-      <div class="left-column">
-      </div>
+      <div class="column-wrapper">
+        
+        <div class="right-column">
         </div>
-  </div>
+        
+        <div class="left-column">
+        </div>
+      
+      </div><!-- comumn-wrapper --> 
+     
+     </div><!-- bx-pager --> 
+  
+   </div>
 </div>
 
 <div class="info-box" id="information">
