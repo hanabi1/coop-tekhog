@@ -123,13 +123,13 @@ function loadDescription(machineTitle){
 	    	//If ajax call was successfull but no/wrong data was returned show error
 	    	if(typeof data[0] === 'undefined' || !data[0]){
 		    	$('#information > p').fadeOut(function(){
-					$('#information > p').html('<p style="display:none">Ingen beskrivning hittades</p>');
+					$('#information > p').text('Ingen beskrivning hittades');
 					$('#information > p').fadeIn();		    		
 		    	})	
 	    	//Everything good! Show description
 	    	}else{
 		    	$('#information > p').fadeOut(function(){
-					$('#information').html('<p style="display:none">' + data[0]['description'] + '</p>');
+					$('#information > p').text(data[0]['description']);
 					$('#information > p').fadeIn();		    		
 		    	})
 	    	}	
@@ -138,7 +138,7 @@ function loadDescription(machineTitle){
 		error:function(errorData) {
 			console.log("There seems to be an error fetching the description. " + errorData.error);
 	    	$('#information > p').fadeOut(function(){
-				$('#information > p').html('<p style="display:none">Ingen beskrivning hittades</p>');
+				$('#information > p').text('Ingen beskrivning hittades');
 				$('#information > p').fadeIn();		    		
 	    	})			
 		}
