@@ -54,6 +54,7 @@ function renderData (movies) {
 			
 		});
 		// Add the titles+author to div with ID bx-pager.
+		/* The best solution but the jQuery slider doesn't allow us to change the DOM structure links live in
 		if(i < 5) {
 
 			$('.left-column').append(
@@ -65,6 +66,12 @@ function renderData (movies) {
 				'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
 			);
     	}
+    	*/
+
+    	/*So were forced to work in a single div instead of a two column div system*/
+    	$('#bx-pager').append(
+			'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
+		);
 
 	};
 
@@ -174,5 +181,6 @@ function loadContactDetails(){
 
 //Returns the YoutubeID of the video currently visible in the slider. 
 function getMachineTitleFromLink(){
+	/*Broken since link no longer get the .active class*/
 	return $('#bx-pager > a.active').attr('id');
 }

@@ -7,16 +7,9 @@
 
 <div class="moviemakers-box" id="moviemakers">
 
-      <div class="column-wrapper">
-        
-        <div class="right-column">
-        </div>
-        
-        <div class="left-column">
-        </div>
-      
-      </div><!-- column-wrapper --> 
-
+      <div id="bx-pager">
+        <h3>Filmerna</h3>
+      </div>
       <div class="clear">
       </div>     
   
