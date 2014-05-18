@@ -6,9 +6,6 @@
 </div>
 
 <div class="moviemakers-box" id="moviemakers">
-  <div class="wrapmovie"> 
-
-    <div id="bx-pager">
 
       <div class="column-wrapper">
         
@@ -18,12 +15,12 @@
         <div class="left-column">
         </div>
       
-      </div><!-- comumn-wrapper --> 
-     
-     </div><!-- bx-pager --> 
+      </div><!-- column-wrapper --> 
+
+      <div class="clear">
+      </div>     
   
-   </div>
-</div>
+</div><!-- moviemakers-box --> 
 
 <div class="info-box" id="information">
   <p>Information</p>

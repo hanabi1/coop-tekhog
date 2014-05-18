@@ -68,13 +68,14 @@ nav a {
     margin-bottom: -2px;
 }
 
-.banner img{
+.banner img {
     width: 100%;
     height: auto;
 }
 
 /* CONTENT
 ---------------------------------------------------------*/
+
 .play-icon{
   margin-left: auto;
   margin-right: auto;
@@ -83,6 +84,7 @@ nav a {
   width: 100px;
   z-index: 10000;
 }
+
 /*Thumbnail*/
 .bxslider > .slide > .video-thumbnail{
   width:90%;
@@ -90,8 +92,25 @@ nav a {
   margin-left: 5%;  /*This margin makes the next/previus arrows on the slider more visible*/
   
 }
+
 .bxslider > .slide{
   background-color: black;
+}
+
+.movies-box {
+  width: 100%;
+  background-color: #101010;
+  color: #fff;
+  text-align: center;
+}
+
+.moviemakers-box {
+  width: 100%;
+  padding: 60px; 
+  background-color: #5c625f;
+  color: #fff;
+  clear: both;
+  margin: 0 auto;
 }
 
 .column-wrapper {
@@ -102,28 +121,16 @@ nav a {
 .left-column {
   float: left;
   width: 50%;
-  padding: 0 40px 0 0;
+  padding: 0 0px 0 20px;
 }
 
 .right-column {
   float: left;
   width: 50%; 
-  padding: 0 0 0 20px;
 }
 
-.movies-box {
-  width: 100%;
-  background-color: #101010;
-  color: #fff;
-}
-
-.moviemakers-box {
-  width: 100%;
-  padding: 40px 0 40px 0; 
-  background-color: #5c625f;
-  color: #fff;
-  margin-top: -60px;
-  border: 1px solid red;
+.clear { 
+  clear: both; 
 }
 
 .info-box {
@@ -145,7 +152,7 @@ nav a {
   color: #000;
 }
 
-/* MOVIE WRAPPER?
+/* MOVIE WRAPPER
 ---------------------------------------------------------*/
 
 .wrap {
@@ -163,3 +170,4 @@ nav a {
 .wrap p:hover {
   opacity: 0.55;
 }
+
