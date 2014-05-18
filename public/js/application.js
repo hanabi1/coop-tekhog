@@ -17,6 +17,9 @@ $(document).ready(function(){
 		
 			//Loads the description from the Machine Title
 			loadDescription(machineTitle);	
+
+			//Load Contact Details
+			loadContactDetails();
 		},
     // If error.
 		error:function(errorData) {
@@ -51,17 +54,17 @@ function renderData (movies) {
 			
 		});
 		// Add the titles+author to div with ID bx-pager.
-if(i < 5) {
+		if(i < 5) {
 
-		$('.left-column').append(
-			'<a data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
-		);
-      } 
-	    else {
-			$('.right-column').append(
-					'<a data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
+			$('.left-column').append(
+				'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
 			);
-	    }
+     	}else{ 
+     
+			$('.right-column').append(
+				'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
+			);
+    	}
 
 	};
 
@@ -134,6 +137,40 @@ function loadDescription(machineTitle){
 		}
 	});	
 }
+
+function loadContactDetails(){
+	$.ajax({
+		// Get all movies from our database.
+	    url:"http://gdata.youtube.com/feeds/api/playlists/9tY0BWXOZFvWi6WNdcokF_YvXUxyESRW?v=2&alt=json",
+			dataType:"json",
+			cache: false,
+		// If successfull, run our renderData function and send the data (a JSON-object) to it.
+	    success:function (data) {
+	    	//If ajax call was successfull but no/wrong data was returned show error
+	    	if(typeof data['feed']['media$group']['media$description']['$t'] === 'undefined' || !data['feed']['media$group']['media$description']['$t']){
+		    	$('#contact > p').fadeOut(function(){
+					$('#contact > p').text('Ingen kontaktinformation hittades');
+					$('#contact > p').fadeIn();		    		
+		    	})	
+	    	//Everything good! Show Contact Details
+	    	}else{
+		    	$('#contact > p').fadeOut(function(){
+					$('#contact > p').text(data['feed']['media$group']['media$description']['$t']);
+					$('#contact > p').fadeIn();		    		
+		    	})
+	    	}	
+		},
+	    // If error.
+		error:function(errorData) {
+			console.log("There seems to be an error fetching the contact details. " + errorData.error);
+	    	$('#contact > p').fadeOut(function(){
+				$('#contact > p').text('Ingen kontaktinformation hittades');
+				$('#contact > p').fadeIn();		    		
+	    	})			
+		}
+	});	
+}
+
 
 //Returns the YoutubeID of the video currently visible in the slider. 
 function getMachineTitleFromLink(){

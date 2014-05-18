@@ -1,5 +1,6 @@
 		<footer class="contact-box" id="contact">
-		  Detta är sidfoten med kontaktuppgifter.
+		  <h3>Kontaktuppgifter</h3>
+		  <p></p>
 		</footer>
 
 	</body>

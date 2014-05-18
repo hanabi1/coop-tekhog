@@ -23,5 +23,6 @@
 </div><!-- moviemakers-box --> 
 
 <div class="info-box" id="information">
-  <p>Information</p>
+  <h3>Beskrivning</h3>
+  <p></p>
 </div>
