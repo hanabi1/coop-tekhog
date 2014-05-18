@@ -7,7 +7,7 @@
 
 <div class="moviemakers-box" id="moviemakers">
   <div class="wrapmovie"> 
-    <p>Filmskaparna</p>
+    <h3>Filmskaparna</h3>
     <div id="bx-pager">
     </div>
   </div>

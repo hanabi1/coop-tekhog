@@ -37,7 +37,7 @@ function renderData (movies) {
 		$('.bxslider').append(
 			
 			// We give the thumbnail img a #id that is the same as the Youtube ID.
-			'<li class="slide"><img id="' + movies[i].link + '" src="http://img.youtube.com/vi/' + movies[i].link + '/hqdefault.jpg" width="100%" height="400px"></li>'
+			'<li class="slide"><img id="' + movies[i].link + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + movies[i].link + '/maxresdefault.jpg"></li>'
 		);
 		
 		//When the thumbnail is clicked...
