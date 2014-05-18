@@ -17,9 +17,6 @@ $(document).ready(function(){
 		
 			//Loads the description from the Machine Title
 			loadDescription(machineTitle);	
-
-			//Load Contact Details
-			loadContactDetails();
 		},
     // If error.
 		error:function(errorData) {
@@ -107,13 +104,13 @@ function loadDescription(machineTitle){
 	    	//If ajax call was successfull but no/wrong data was returned show error
 	    	if(typeof data[0] === 'undefined' || !data[0]){
 		    	$('#information > p').fadeOut(function(){
-					$('#information > p').text('Ingen beskrivning hittades');
+					$('#information > p').html('<p style="display:none">Ingen beskrivning hittades</p>');
 					$('#information > p').fadeIn();		    		
 		    	})	
 	    	//Everything good! Show description
 	    	}else{
 		    	$('#information > p').fadeOut(function(){
-					$('#information > p').text(data[0]['description']);
+					$('#information').html('<p style="display:none">' + data[0]['description'] + '</p>');
 					$('#information > p').fadeIn();		    		
 		    	})
 	    	}	
@@ -122,7 +119,7 @@ function loadDescription(machineTitle){
 		error:function(errorData) {
 			console.log("There seems to be an error fetching the description. " + errorData.error);
 	    	$('#information > p').fadeOut(function(){
-				$('#information > p').text('Ingen beskrivning hittades');
+				$('#information > p').html('<p style="display:none">Ingen beskrivning hittades</p>');
 				$('#information > p').fadeIn();		    		
 	    	})			
 		}
@@ -132,39 +129,4 @@ function loadDescription(machineTitle){
 //Returns the YoutubeID of the video currently visible in the slider. 
 function getMachineTitleFromLink(){
 	return $('#bx-pager > a.active').attr('id');
-}
-
-function loadContactDetails(){
-	$.ajax({
-		// Get all movies from our database.
-	    url:"http://gdata.youtube.com/feeds/api/playlists/9tY0BWXOZFvWi6WNdcokF_YvXUxyESRW?v=2&alt=json",
-			dataType:"json",
-			cache: false,
-		// If successfull, run our renderData function and send the data (a JSON-object) to it.
-	    success:function (data) {
-	    	//If ajax call was successfull but no/wrong data was returned show error
-	    	if(typeof data['feed']['media$group']['media$description']['$t'] === 'undefined' || !data['feed']['media$group']['media$description']['$t']){
-		    	$('#contact > p').fadeOut(function(){
-					$('#contact > p').text('Ingen kontaktinformation hittades');
-					$('#contact > p').fadeIn();		    		
-		    	})	
-	    	//Everything good! Show Contact Details
-	    	}else{
-		    	$('#contact > p').fadeOut(function(){
-					$('#contact > p').text(data['feed']['media$group']['media$description']['$t']);
-					$('#contact > p').fadeIn();		    		
-		    	})
-	    	}	
-		},
-	    // If error.
-		error:function(errorData) {
-			console.log("There seems to be an error fetching the contact details. " + errorData.error);
-	    	$('#contact > p').fadeOut(function(){
-				$('#contact > p').text('Ingen kontaktinformation hittades');
-				$('#contact > p').fadeIn();		    		
-	    	})			
-		}
-	});	
-
-
 }

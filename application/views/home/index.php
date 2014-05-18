@@ -14,6 +14,5 @@
 </div>
 
 <div class="info-box" id="information">
-  <h3>Information</h3>
-  <p></p>
+  <p>Information</p>
 </div>
