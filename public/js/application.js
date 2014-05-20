@@ -37,7 +37,7 @@ function renderData (movies) {
 		$('.bxslider').append(
 			
 			// We give the thumbnail img a #id that is the same as the Youtube ID.
-			'<li class="slide"><img id="' + movies[i].link + '" src="http://img.youtube.com/vi/' + movies[i].link + '/hqdefault.jpg" width="100%" height="400px"></li>'
+			'<li class="slide"><img id="' + movies[i].link + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + movies[i].link + '/maxresdefault.jpg"></li>'
 		);
 		
 		//When the thumbnail is clicked...
@@ -54,9 +54,25 @@ function renderData (movies) {
 			
 		});
 		// Add the titles+author to div with ID bx-pager.
-		$('#bx-pager').append(
+		/* The best solution but the jQuery slider doesn't allow us to change the DOM structure links live in
+		if(i < 5) {
+
+			$('.left-column').append(
+				'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
+			);
+     	}else{ 
+     
+			$('.right-column').append(
+				'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
+			);
+    	}
+    	*/
+
+    	/*So were forced to work in a single div instead of a two column div system*/
+    	$('#bx-pager').append(
 			'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
-		);	
+		);
+
 	};
 
 	videoSlider();
@@ -129,11 +145,6 @@ function loadDescription(machineTitle){
 	});	
 }
 
-//Returns the YoutubeID of the video currently visible in the slider. 
-function getMachineTitleFromLink(){
-	return $('#bx-pager > a.active').attr('id');
-}
-
 function loadContactDetails(){
 	$.ajax({
 		// Get all movies from our database.
@@ -165,6 +176,11 @@ function loadContactDetails(){
 	    	})			
 		}
 	});	
+}
 
 
+//Returns the YoutubeID of the video currently visible in the slider. 
+function getMachineTitleFromLink(){
+	/*Broken since link no longer get the .active class*/
+	return $('#bx-pager > a.active').attr('id');
 }

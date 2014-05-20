@@ -6,14 +6,16 @@
 </div>
 
 <div class="moviemakers-box" id="moviemakers">
-  <div class="wrapmovie"> 
-    <p>Filmskaparna</p>
-    <div id="bx-pager">
-    </div>
-  </div>
-</div>
+
+      <div id="bx-pager">
+        <h3>Filmerna</h3>
+      </div>
+      <div class="clear">
+      </div>     
+  
+</div><!-- moviemakers-box --> 
 
 <div class="info-box" id="information">
-  <h3>Information</h3>
+  <h3>Beskrivning</h3>
   <p></p>
 </div>

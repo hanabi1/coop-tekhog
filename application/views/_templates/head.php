@@ -42,7 +42,7 @@
         <link href="<?php echo URL; ?>public/css/css.less" rel="stylesheet">
         
         <!-- Google Fonts -->        
-        <link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>  
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700' rel='stylesheet' type='text/css'>  
         
         <!-- JavaScript -->
         <script src="<?php echo URL; ?>public/js/application.js"></script>

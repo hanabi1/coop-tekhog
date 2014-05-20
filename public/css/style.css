@@ -68,13 +68,14 @@ nav a {
     margin-bottom: -2px;
 }
 
-.banner img{
+.banner img {
     width: 100%;
     height: 100vh;
 }
 
 /* CONTENT
 ---------------------------------------------------------*/
+
 .play-icon{
   margin-left: auto;
   margin-right: auto;
@@ -84,18 +85,52 @@ nav a {
   z-index: 10000;
 }
 
+/*Thumbnail*/
+.bxslider > .slide > .video-thumbnail{
+  width:90%;
+  height:400px;
+  margin-left: 5%;  /*This margin makes the next/previus arrows on the slider more visible*/
+  
+}
+
+.bxslider > .slide{
+  background-color: black;
+}
+
 .movies-box {
   width: 100%;
   background-color: #101010;
   color: #fff;
+  text-align: center;
 }
 
 .moviemakers-box {
   width: 100%;
-  padding: 40px 0 40px 0; 
+  padding: 60px; 
   background-color: #5c625f;
   color: #fff;
-  margin-top: -60px;
+  clear: both;
+  margin: 0 auto;
+}
+
+.column-wrapper {
+  float: left;
+  width: 100%;
+}
+
+.left-column {
+  float: left;
+  width: 50%;
+  padding: 0 0px 0 20px;
+}
+
+.right-column {
+  float: left;
+  width: 50%; 
+}
+
+.clear { 
+  clear: both; 
 }
 
 .info-box {
@@ -117,7 +152,7 @@ nav a {
   color: #000;
 }
 
-/* MOVIE WRAPPER?
+/* MOVIE WRAPPER
 ---------------------------------------------------------*/
 
 .wrap {
@@ -135,3 +170,4 @@ nav a {
 .wrap p:hover {
   opacity: 0.55;
 }
+
