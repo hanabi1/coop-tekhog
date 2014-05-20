@@ -12,12 +12,6 @@ $(document).ready(function(){
     		//Adds the links
 			renderData(data);
 			
-			//Gets the machineTitle from the link
-			var machineTitle = getMachineTitleFromLink();
-		
-			//Loads the description from the Machine Title
-			loadDescription(machineTitle);	
-
 			//Load Contact Details
 			loadContactDetails();
 		},
@@ -31,6 +25,10 @@ $(document).ready(function(){
 
 function renderData (movies) {
   // Loop to add stuff from JSON-data (movies variable) to the DOM.
+
+	//Loads the description from the Machine Title
+	loadDescription(movies[0]['machinetitle']);
+
 	for (var i = 0;i < movies.length;i++) {
 		
 		// Add only the thumbnail (not the actuall movie) to our div with class bxslider.
@@ -109,9 +107,7 @@ function loadDescription(machineTitle){
 	if(typeof machineTitle === 'undefined' || !machineTitle){
 		return false;
 	}
-	console.log('loadDescription got param data: ' + machineTitle )
-
-	var description = '<p>Ingen beskrivning hittades</p>';		
+	console.log('loadDescription got param data: ' + machineTitle )	
 
 	$.ajax({
 		// Get all movies from our database.
@@ -121,7 +117,7 @@ function loadDescription(machineTitle){
 		// If successfull, run our renderData function and send the data (a JSON-object) to it.
 	    success:function (data) {
 	    	//If ajax call was successfull but no/wrong data was returned show error
-	    	if(typeof data[0] === 'undefined' || !data[0]){
+	    	if(typeof data[0]['description'] === 'undefined' || !data[0]['description']){
 		    	$('#information > p').fadeOut(function(){
 					$('#information > p').text('Ingen beskrivning hittades');
 					$('#information > p').fadeIn();		    		
