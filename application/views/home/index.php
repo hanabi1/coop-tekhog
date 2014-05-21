@@ -6,7 +6,7 @@
 <div class="moviemakers-box" id="moviemakers">
 
       <div id="bx-pager">
-        <h3>Filmerna</h3>
+        <h3>Filmer</h3>
       </div>
       <div class="clear">
       </div>     
@@ -14,6 +14,6 @@
 </div><!-- moviemakers-box --> 
 
 <div class="info-box" id="information">
-  <h3>Beskrivning</h3>
+  <h3>Information</h3>
   <p></p>
 </div>
