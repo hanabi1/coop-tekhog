@@ -93,7 +93,7 @@ class MoviesModel
             $moviesData[$i]=array('videoid'=> $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
             $moviesData[$i]+=array('title'=> $data['feed']['entry'][$i]['title']['$t']);
             $moviesData[$i]+=array('author'=> $data['feed']['entry'][$i]['author'][0]['name']['$t']);
-            $moviesData[$i]+=array('description'=> $data['feed']['entry'][$i]['media$group']['media$description']['$t']);
+            //$moviesData[$i]+=array('description'=> $data['feed']['entry'][$i]['media$group']['media$description']['$t']);
             $moviesData[$i]+=array('link'=> $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
         }
         //Return the relevant data as JSON
