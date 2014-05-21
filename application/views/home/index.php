@@ -1,8 +1,6 @@
 <div class="movies-box" id="movies"> 
-  <div class="wrap"> 
     <ul class="bxslider">       
     </ul>
-  </div>
 </div>
 
 <div class="moviemakers-box" id="moviemakers">
