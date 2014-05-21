@@ -24,6 +24,45 @@ and (orientation : portrait) {
 }
 
 @media screen and (max-width: 640px) {
+/* NAV MENU */
+nav {
+  padding: 10px 0 10px 10px;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+nav li {
+  list-style: none;
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  margin-right: 15px;
+  line-height: 20px;
+  text-align: center;
+  color: #000;
+}
+nav a {
+  text-decoration: none;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  color: #f1f1f1;
+}
+
+/* BANNER */  
+.banner {
+    position: relative;
+    background-image: url(../img/imagetest.jpg);
+    /*background-size: 100%;*/
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.banner img {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 70px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 35px;
+}
+
 }
 
 @media screen and (max-width: 560px) {
