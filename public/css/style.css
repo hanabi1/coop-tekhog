@@ -121,6 +121,7 @@ nav a {
 
 .movies-box {
   width: 100%;
+  margin: 40px 0 40px 0;
   background-color: #101010;
   color: #fff;
   text-align: center;
