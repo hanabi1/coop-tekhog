@@ -37,64 +37,6 @@ class Movies extends Controller
         echo json_encode($movieModel->getAllMoviesFromAPI(),JSON_UNESCAPED_UNICODE);
     }
 
-    public function getmovie($title)
-    {
-
-        header('Content-Type: application/json; charset=utf-8');   
-        
-        $movieModel = $this->loadModel('MoviesModel');   
-        
-        //Check if it is time to get new movies from the API
-        if($this->isItTimeToCache() === true){
-           //Start the Caching rutine that stores all movies from API in database
-           $this->updateCache();         
-        }
-
-        //Return one movie as JSON
-        echo json_encode($movieModel->getMovieFromDB(strtolower($title)),JSON_UNESCAPED_UNICODE); 
-    }
-
-    private function isItTimeToCache(){
-
-        $movieModel = $this->loadModel('MoviesModel');   
-
-        //Get the last database update time to prevent spamming of the Youtube API
-        $lastRefreshTime = $movieModel->getLastDatabaseRefresh();    
-        
-        //Get the current UNIX time (all the seconds from around 1970 =)
-        $currentUnixTime = time();
-
-        //If the specified amount of time has passes since last update then update all movies
-        if($currentUnixTime >= ($lastRefreshTime + YOUTUBE_DELAY)){
-            //Database needs an update
-            return true;
-        }
-
-        //Database was allready updated recently
-        return false;
-    }
-
-    private function updateCache(){
-        $movieModel = $this->loadModel('MoviesModel');   
-
-        //Get fresh movies from the API
-        $freshMovies = $movieModel->getAllMoviesFromAPI(); 
-
-        //Generates Machinetitles for the movies.
-        //Populates the 'machineTitle' element for each movie in the array.
-        //This is needed so we can access the movies though the URL /root/movies/overvag-nu-denna-titel.
-        //
-        //Example: 'Överväg Nu Denna Titel!' --> 'overvag-nu-denna-titel'
-        $freshMovies = $this->addMachineTitles($freshMovies);
-
-        //Cache the fresh movies to DB so we can get them for the next user
-        $movieModel->cacheMoviesToDB($freshMovies);  
-
-        //Update the last cache-refresh time
-        //So we know when to cache next time
-        $movieModel->setNewDatabaseRefreshTime(time()); 
-    }
-
     private function addMachineTitles($movies=''){
         if(!$movies){
             return false;
