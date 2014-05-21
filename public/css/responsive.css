@@ -33,16 +33,13 @@ nav {
 nav li {
   list-style: none;
   display: inline-block;
-  font-family: 'Open Sans', sans-serif;
-  margin-right: 15px;
   line-height: 20px;
   text-align: center;
   color: #000;
 }
 nav a {
   text-decoration: none;
-  font-size: 14px;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
   color: #f1f1f1;
 }
 
@@ -57,12 +54,11 @@ nav a {
 .banner img {
   max-width: 100%;
   margin: 0 auto;
-  padding-top: 70px;
+  padding-top: 90px;
   padding-left: 10%;
   padding-right: 10%;
-  padding-bottom: 35px;
+  padding-bottom: 55px;
 }
-
 }
 
 @media screen and (max-width: 560px) {
