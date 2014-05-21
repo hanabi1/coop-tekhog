@@ -144,7 +144,7 @@ function loadDescription(machineTitle){
 function loadContactDetails(){
 	$.ajax({
 		// Get all movies from our database.
-	    url:"http://gdata.youtube.com/feeds/api/playlists/9tY0BWXOZFvWi6WNdcokF_YvXUxyESRW?v=2&alt=json",
+	    url:"http://gdata.youtube.com/feeds/api/playlists/SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx?v=2&alt=json",
 			dataType:"json",
 			cache: false,
 		// If successfull, run our renderData function and send the data (a JSON-object) to it.
