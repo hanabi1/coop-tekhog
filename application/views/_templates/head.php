@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">
         <meta name="description" content="">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         
         <title><?php if($title):?>
                     <?php echo ucfirst($title) . ' &middot; Samhällssår' ;?>
