@@ -26,6 +26,10 @@ a:hover {
   color: #fff;
 }
 
+p {
+  font-weight: 300;
+}
+
 /* NAVIGATION
 ---------------------------------------------------------*/
 
@@ -141,8 +145,8 @@ nav a {
   clear: both;
   width: 100%;
   padding: 40px 0 40px 0; 
-  color: #000;
-  background-color: #bdcbc3;
+  color: #f1f1f1;
+  background-color: #3d4146;
   margin: 0 auto;
   text-align: center;
 }
@@ -151,9 +155,9 @@ nav a {
   clear: both;
   width: 100%;
   padding: 40px 0 40px 0; 
-  background-color: #d4e2da;
+  background-color: #2f3236;
   text-align: center;
-  color: #000;
+  color: #f1f1f1;
 }
 
 /* MOVIE WRAPPER
