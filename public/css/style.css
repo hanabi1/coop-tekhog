@@ -7,7 +7,7 @@ html {
 
 body {
   max-width: 100%;
-  background-color: #000;
+  background-color: red;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -106,7 +106,7 @@ nav a {
 /*Thumbnail*/
 .bxslider > .slide > .video-thumbnail{
   width:90%;
-  height:400px;
+  height:600px;
   margin-left: 5%;  /*This margin makes the next/previus arrows on the slider more visible*/
   
 }
@@ -129,6 +129,8 @@ nav a {
   color: #fff;
   clear: both;
   margin: 0 auto;
+  line-height: 1.5;
+  margin-top: -60px;
 }
 
 #bx-pager > a{
@@ -154,14 +156,14 @@ nav a {
 }
 
 .info-box {
-  margin: 0 auto;
   clear: both;
   width: 100%;
   padding: 60px; 
   color: #f1f1f1;
   background-color: #3d4146;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
+  line-height: 1.5;
 }
 
 .contact-box {
@@ -170,8 +172,9 @@ nav a {
   width: 100%;
   padding: 60px; 
   background-color: #2f3236;
-  text-align: center;
+  text-align: left;
   color: #f1f1f1;
+  line-height: 1.5;
 }
 
 /* MOVIE WRAPPER
