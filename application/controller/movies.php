@@ -33,14 +33,8 @@ class Movies extends Controller
     {
         header('Content-Type: application/json; charset=utf-8');        
         $movieModel = $this->loadModel('MoviesModel');   
-
-        //Check if it is time to get new movies from the API
-        if($this->isItTimeToCache() === true){
-           //Start the Caching rutine that stores all movies from API in database
-           $this->updateCache();         
-        }
-        
-        echo json_encode($movieModel->getAllMoviesFromDB(),JSON_UNESCAPED_UNICODE);
+       
+        echo json_encode($movieModel->getAllMoviesFromAPI(),JSON_UNESCAPED_UNICODE);
     }
 
     public function getmovie($title)
