@@ -72,11 +72,17 @@ nav a {
 .banner {
     position: relative;
     margin-bottom: -2px;
+    background-image: url(../img/imagetest.jpg);
+    background-size: 100%;
+    height: 100vh; 
 }
 
 .banner img {
-    width: 100%;
-    height: 100vh;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 150px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 /* CONTENT
