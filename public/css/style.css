@@ -30,6 +30,13 @@ p {
   font-weight: 300;
 }
 
+h3 {
+  padding-bottom: 20px;
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 18px;
+}
+
 /* NAVIGATION
 ---------------------------------------------------------*/
 
@@ -71,7 +78,6 @@ nav a {
 
 .banner {
     position: relative;
-    margin-bottom: -2px;
     background-image: url(../img/imagetest.jpg);
     background-size: 100%;
     height: 100vh; 
@@ -148,9 +154,10 @@ nav a {
 }
 
 .info-box {
+  margin: 0 auto;
   clear: both;
   width: 100%;
-  padding: 40px 0 40px 0; 
+  padding: 60px; 
   color: #f1f1f1;
   background-color: #3d4146;
   margin: 0 auto;
@@ -158,9 +165,10 @@ nav a {
 }
 
 .contact-box {
+  margin: 0 auto;
   clear: both;
   width: 100%;
-  padding: 40px 0 40px 0; 
+  padding: 60px; 
   background-color: #2f3236;
   text-align: center;
   color: #f1f1f1;
