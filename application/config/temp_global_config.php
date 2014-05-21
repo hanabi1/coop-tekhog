@@ -15,7 +15,7 @@
  *
  * This value should be at least 10min(10min = 600sec) in final stages
  */
-define('YOUTUBE_DELAY', 9999999999999999999);
+define('YOUTUBE_DELAY', 0);
 
 /**
  * Configuration for: YouTube
@@ -24,7 +24,7 @@ define('YOUTUBE_DELAY', 9999999999999999999);
  *
  * LIVE PLAYLIST ID: SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx
  */
-define('YOUTUBE_PLAYLIST_ID' , 'PLETsGmQ-25bTg_X1BPDyIU_zHPn2dm0XF'); //<- test id!
+define('YOUTUBE_PLAYLIST_ID' , 'SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx'); //<- test id!
 
 function isDatabaseComplete(){
 
