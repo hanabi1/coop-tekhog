@@ -110,9 +110,9 @@ nav a {
 /*Thumbnail*/
 .bxslider > .slide > .video-thumbnail {
   width:100%;
-  height:auto;
   margin: 0;
   padding: 0;
+  height: 100vh;
 }
 
 .bxslider > .slide{
@@ -128,7 +128,6 @@ nav a {
   background-color: #101010;
   color: #fff;
   text-align: center;
-  height:auto;
 }
 
 .moviemakers-box {
