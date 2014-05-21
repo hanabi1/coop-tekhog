@@ -34,7 +34,8 @@ h3 {
   padding-bottom: 20px;
   font-family: inherit;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 22px;
+  letter-spacing: 0.08em;
 }
 
 /* NAVIGATION
@@ -121,7 +122,6 @@ nav a {
 
 .movies-box {
   width: 100%;
-  margin: 40px 0 40px 0;
   background-color: #101010;
   color: #fff;
   text-align: center;
