@@ -1,5 +1,5 @@
 		<footer class="contact-box" id="contact">
-		  <h3>Kontaktuppgifter</h3>
+		  <h3>Kontakt</h3>
 		  <p></p>
 		</footer>
 
