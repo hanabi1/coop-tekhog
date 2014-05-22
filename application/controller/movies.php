@@ -36,7 +36,99 @@ class Movies extends Controller
        
         echo json_encode($movieModel->getAllMoviesFromAPI(),JSON_UNESCAPED_UNICODE);
     }
+    
+    public function getMovieEvents()
+    {
+        header('Content-Type: application/json; charset=utf-8');        
+        $movieModel = $this->loadModel('MoviesModel');   
+        
+                //we have to set timezone to Europe/Stockholm
+        date_default_timezone_set('Europe/Stockholm');
 
+        //requiring FB PHP SDK
+        require_once('application/tools/facebook-sdk/src/facebook.php');
+
+        //initializing keys
+        $facebook = new Facebook(array(
+            'appId'  => '251234321726333',
+            'secret' => 'a793d6f12a3f87f0029e432be8dd3bec',
+            'cookie' => true
+        ));
+
+        /*
+         *-Query the events
+         *
+         *-We will select:
+         *  -name, start_time, end_time, location, description
+         *  -but there are other data that you can get on the event table
+         *      -https://developers.facebook.com/docs/reference/fql/event/
+         * 
+         *-As you will notice, we have TWO select statements here because
+         *-We can't just do "WHERE creator = your_fan_page_id".
+         *-Only eid is indexable in the event table
+         *  -So we have to retrieve list of events by eids
+         *      -And this was achieved by selecting all eid from
+         *          event_member table where the uid is the id of your fanpage.
+         *
+         *-Yes, you fanpage automatically becomes an event_member once it creates an event
+         *-start_time >= now() is used to show upcoming events only
+         */
+        $fql = "SELECT
+                    name, pic, start_time, end_time, location, description
+                FROM
+                    event
+                WHERE
+                    eid IN ( SELECT eid FROM event_member WHERE uid = 1380611578866107 )
+                AND
+                    start_time >= now()
+                ORDER BY
+                    start_time desc";
+         
+        $param  =   array(
+            'method'    => 'fql.query',
+            'query'     => $fql,
+            'callback'  => ''
+        );
+         
+        $fqlResult   =   $facebook->api($param);
+         
+        //looping through retrieved data
+        for($i=0; $i < count($fqlResult); $i++) { 
+            # code...
+            /*
+             * see here http://php.net/manual/en/function.date.php
+             * for the date format I used.
+             * The pattern string I used 'l, F d, Y g:i a'
+             * will output something like this: July 30, 2015 6:30 pm
+             */
+         
+            /*  
+             * getting start date,
+             * 'l, F d, Y' pattern string will give us
+             * something like: Thursday, July 30, 2015
+             */
+            $start_date = date( 'l, F d, Y', strtotime($values['start_time']) );
+         
+            /*
+             * getting 'start' time
+             * 'g:i a' will give us something
+             * like 6:30 pm
+             */
+            $start_time = date( 'g:i a', $values['start_time'] );
+
+            $events = array();
+            $events[$i] = array('name' => $fqlResult[$i]['name'],
+                                'startdate' => $startdate,
+                                'starttime' => $start_time,
+                                'description' => $fqlResult[$i]['description'],
+                                'pic' => $fqlResult[$i]['pic']);
+
+
+        }
+
+        //Print out the movies as JSON so the client can recieve them
+         echo json_encode($events);
+    }
     private function addMachineTitles($movies=''){
         if(!$movies){
             return false;
