@@ -119,7 +119,7 @@ function loadDescription(machineTitle){
 	    	//If ajax call was successfull but no/wrong data was returned show error
 	    	if(typeof data[0]['description'] === 'undefined' || !data[0]['description']){
 		    	$('#information > p').fadeOut(function(){
-					$('#information > p').text('Ingen beskrivning hittades');
+					$('#information > p').text('Ingen info finns');
 					$('#information > p').fadeIn();		    		
 		    	})	
 	    	//Everything good! Show description
