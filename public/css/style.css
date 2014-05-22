@@ -85,14 +85,13 @@ nav a {
     background-image: url(../img/imagetest.jpg);
     background-size: 100%;
     height: 100vh; 
+    text-align: center;
 }
 
 .banner img {
   max-width: 100%;
   margin: 0 auto 60px auto;
   padding-top: 150px;
-  padding-left: 10%;
-  padding-right: 10%;
 }
 
 /* CONTENT
@@ -112,7 +111,6 @@ nav a {
   width:100%;
   margin: 0;
   padding: 0;
-  height: 100vh;
 }
 
 .bxslider > .slide{
