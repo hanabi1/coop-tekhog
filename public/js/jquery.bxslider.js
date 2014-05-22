@@ -80,8 +80,50 @@
 		onSliderLoad: function() {},
 		onSlideBefore: function() {},
 		onSlideAfter: function() {},
-		onSlideNext: function() {},
-		onSlidePrev: function() {}
+		onSlideNext: function() {
+			
+			var videoID = $('.video-player').attr('id');
+			
+			if(videoID){
+
+				//Transform our youtubevideo into a thumbnail image again
+				$('.video-player').parent().html('<li class="slide"><img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg"></li>');
+				
+				//Rebind the clickhandler so that if we click on our thumbnail again. It will be a youtube movie
+				$('#' + videoID).click(function(){
+				
+					//The movies variable in renderData() is no longer available when this thumbnail is clicked.
+					//So we get the Youtube video ID from the ID Hashtag instead of the movie variable! 
+					var videoID = $(this).attr('id');
+					
+					//(this). returns the <img> that was clicked. We cant put the video into the image....
+					//So we replace the content in the parent of <img> ie the <li>!
+					$(this).parent().html('<iframe id="' + videoID +'"class="video-player" width="100%" height="600px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1&autoplay=1&enablejsapi=1&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>');
+				});
+			}	
+		},
+		onSlidePrev: function() {
+			
+			var videoID = $('.video-player').attr('id');
+			
+			if(videoID){
+
+				//Transform our youtubevideo into a thumbnail image again
+				$('.video-player').parent().html('<li class="slide"><img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg"></li>');
+				
+				//Rebind the clickhandler so that if we click on our thumbnail again. It will be a youtube movie
+				$('#' + videoID).click(function(){
+				
+					//The movies variable in renderData() is no longer available when this thumbnail is clicked.
+					//So we get the Youtube video ID from the ID Hashtag instead of the movie variable! 
+					var videoID = $(this).attr('id');
+					
+					//(this). returns the <img> that was clicked. We cant put the video into the image....
+					//So we replace the content in the parent of <img> ie the <li>!
+					$(this).parent().html('<iframe id="' + videoID +'"class="video-player" width="100%" height="600px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1&autoplay=1&enablejsapi=1&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>');
+				});
+			}				
+		}
 	}
 
 	$.fn.bxSlider = function(options){
