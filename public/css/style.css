@@ -138,6 +138,9 @@ nav a {
   clear: both;
   margin: 0 auto;
   line-height: 1.5;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 18px;
 }
 
 #bx-pager > a{
@@ -170,8 +173,10 @@ nav a {
   margin: 0 auto;
   text-align: left;
   line-height: 1.5;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 18px;
 }
-
 .contact-box {
   margin: 0 auto;
   clear: both;
@@ -181,6 +186,9 @@ nav a {
   text-align: left;
   color: #f1f1f1;
   line-height: 1.5;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 18px;
 }
 
 /* MOVIE WRAPPER

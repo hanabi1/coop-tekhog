@@ -16,9 +16,10 @@
 
 <div class="info-box" id="information">
   <h3>Information</h3>
-  <p>Samhällssår är en antologi med __st kortfilmer som har producerats inför det svenska riksdagsvalet 2014. 
+  <p>
+    Samhällssår är en antologi med 12 st kortfilmer som har producerats inför det svenska riksdagsvalet 2014. 
   	 Vi är en samling filmare och konstnärer som har reagerat på att de senaste årens politik sällan gynnar 
   	 majoriteten av oss människor. Vi vill påbörja samtal om vad vi behöver i Sverige och därför har vi gjort 
-  	 varsin film till denna antologi. Så titta, sprid, samtala och förändra!
+     varsin film till denna antologi. Så titta, sprid, samtala och förändra!
   </p>
 </div>
