@@ -23,6 +23,5 @@ define('YOUTUBE_DELAY', 0);
  * Do not include "PL" that is usually in the beginning of a Playlist ID
  *
  * LIVE PLAYLIST ID: SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx
- * TEST PLAYLIST ID: PLETsGmQ-25bTg_X1BPDyIU_zHPn2dm0XF
  */
 define('YOUTUBE_PLAYLIST_ID' , 'SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx'); //<- test id!

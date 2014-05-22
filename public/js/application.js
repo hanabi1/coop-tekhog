@@ -48,7 +48,7 @@ function renderData (movies) {
 			
 			//(this). returns the <img> that was clicked. We cant put the video into the image....
 			//So we replace the content in the parent of <img> ie the <li>!
-			$(this).parent().html('<iframe id="' + videoID +'"class="video-player" width="100%" height="600px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1&autoplay=1&enablejsapi=1&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>');
+			$(this).parent().html('<iframe width="100%" height="600px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1;autoplay=1" frameborder="0" allowfullscreen></iframe>');
 			
 		});
 		// Add the titles+author to div with ID bx-pager.

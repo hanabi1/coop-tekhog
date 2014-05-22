@@ -14,37 +14,27 @@ class Movies extends Controller
         require 'application/views/_templates/footer.php';
     }
 
-    public function getMovie($machineTitle = '')
+    public function title($movieTitle = '')
     {
-        if(!$machineTitle){
-            echo 'No title sent to getMovie...';
-            return false;
-        }
-        $movieModel = $this->loadModel('MoviesModel');
-        $result = $movieModel->getMovieFromDB($machineTitle);
-        
-        echo json_encode($result);
 
+        $movieModel = $this->loadModel('MoviesModel');
+        $result = $movieModel->getMovieFromDB($movieTitle);
+        if(!count($result)){
+            header('location: ' . URL);
+        }
+
+        echo $this->dressTemplate('/_templates/head', array('title'=> $this->pageTitle));        
+        require 'application/views/_templates/header.php';
+        require 'application/views/home/index.php';
+        require 'application/views/_templates/footer.php';
     }
 
     public function getallmovies()
     {
         header('Content-Type: application/json; charset=utf-8');        
         $movieModel = $this->loadModel('MoviesModel');   
-        
-        //Get the movies from the API
-        $freshMovies = $movieModel->getAllMoviesFromAPI();
-               
-        //Add machinereadable titles
-        $freshMovies = $this->addMachineTitles($freshMovies);
-
-        //Cache the movies to DB so we can get info from them later
-        //without having to download them all again.
-        $movieModel->cacheMoviesToDB($freshMovies);
-
-
-        //Print out the movies as JSON so the client can recieve them
-        echo json_encode($freshMovies);
+       
+        echo json_encode($movieModel->getAllMoviesFromAPI(),JSON_UNESCAPED_UNICODE);
     }
 
     private function addMachineTitles($movies=''){
