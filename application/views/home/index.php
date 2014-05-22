@@ -1,3 +1,6 @@
+<div class="infomovies">
+</div>
+
 <div class="movies-box" id="movies"> 
     <ul class="bxslider">       
     </ul>
