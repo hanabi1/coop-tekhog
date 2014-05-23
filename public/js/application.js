@@ -13,7 +13,10 @@ $(document).ready(function(){
 			renderData(data);
 			
 			//Load Contact Details
-			loadContactDetails();
+			loadProjectInformation();
+
+			//Loads the facebook page events
+			loadEvents();
 		},
     // If error.
 		error:function(errorData) {
@@ -107,7 +110,6 @@ function loadDescription(machineTitle){
 	if(typeof machineTitle === 'undefined' || !machineTitle){
 		return false;
 	}
-	console.log('loadDescription got param data: ' + machineTitle )	
 
 	$.ajax({
 		// Get all movies from our database.
@@ -118,30 +120,74 @@ function loadDescription(machineTitle){
 	    success:function (data) {
 	    	//If ajax call was successfull but no/wrong data was returned show error
 	    	if(typeof data[0]['description'] === 'undefined' || !data[0]['description']){
-		    	$('#information > p').fadeOut(function(){
-					$('#information > p').text('Ingen info finns');
-					$('#information > p').fadeIn();		    		
+		    	$('#moviedescription > p').fadeOut(function(){
+					$('#moviedescription > p').text('Ingen info finns');
+					$('#moviedescription > p').fadeIn();		    		
 		    	})	
 	    	//Everything good! Show description
 	    	}else{
-		    	$('#information > p').fadeOut(function(){
-					$('#information > p').text(data[0]['description']);
-					$('#information > p').fadeIn();		    		
+		    	$('#moviedescription > p').fadeOut(function(){
+					$('#moviedescription > p').text(data[0]['description']);
+					$('#moviedescription > p').fadeIn();		    		
 		    	})
 	    	}	
 		},
 	    // If error.
 		error:function(errorData) {
 			console.log("There seems to be an error fetching the description. " + errorData.error);
-	    	$('#information > p').fadeOut(function(){
-				$('#information > p').text('Ingen beskrivning hittades');
-				$('#information > p').fadeIn();		    		
+	    	$('#moviedescription > p').fadeOut(function(){
+				$('#moviedescription > p').text('Ingen beskrivning hittades');
+				$('#moviedescription > p').fadeIn();		    		
 	    	})			
 		}
 	});	
 }
 
-function loadContactDetails(){
+//Loads the correct description and fades it in
+function loadEvents(){
+
+	$.ajax({
+		// Get all movies from our database.
+	    url:"movies/getmovieevents/",
+			dataType:"json",
+			cache: false,
+		// If successfull, run our renderData function and send the data (a JSON-object) to it.
+	    success:function (data) {
+	    	//If ajax call was successfull but no/wrong data was returned show error
+	    	if(typeof data === 'undefined' || !data){
+		    	$('#event > p').fadeOut(function(){
+					$('#event > p').text('Evenemangen kommer snart');
+					$('#event > p').fadeIn();		    		
+		    	})	
+	    	//Everything good! Show description
+	    	}else{
+		    	$('#event > p').fadeOut(function(){
+					for(var i=0;i<data.length;i++){
+						var stycke;
+
+						stycke = '<h4><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' +data[i]['name'] + '">' + data[i]['name'] + '</a></h4>' + 
+								 '<small>' + data[i]['startdate'] + ' ' + data[i]['starttime'] + '</small><br><br>' +
+								 '<p>' + data[i]['description'] + '</p>' +
+								 '<br><p><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' + data[i]['name'] + '">(Länk till Eventet) ' + '</a></p>'
+									
+						$('#event > p').html(stycke);
+					}
+					$('#event > p').fadeIn();		    		
+		    	})
+	    	}	
+		},
+	    // If error.
+		error:function(errorData) {
+			console.log("There seems to be an error fetching the event list. " + errorData.error);
+	    	$('#event > p').fadeOut(function(){
+				$('#event > p').text('Evenemangen kommer snart');
+				$('#event > p').fadeIn();		    		
+	    	})			
+		}
+	});	
+}
+
+function loadProjectInformation(){
 	$.ajax({
 		// Get all movies from our database.
 	    url:"http://gdata.youtube.com/feeds/api/playlists/SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx?v=2&alt=json",
@@ -151,24 +197,24 @@ function loadContactDetails(){
 	    success:function (data) {
 	    	//If ajax call was successfull but no/wrong data was returned show error
 	    	if(typeof data['feed']['media$group']['media$description']['$t'] === 'undefined' || !data['feed']['media$group']['media$description']['$t']){
-		    	$('#contact > p').fadeOut(function(){
-					$('#contact > p').text('Ingen kontaktinformation hittades');
-					$('#contact > p').fadeIn();		    		
+		    	$('#information > p').fadeOut(function(){
+					$('#information > p').text('Ingen beskrivning hittades');
+					$('#information > p').fadeIn();		    		
 		    	})	
 	    	//Everything good! Show Contact Details
 	    	}else{
-		    	$('#contact > p').fadeOut(function(){
-					$('#contact > p').text(data['feed']['media$group']['media$description']['$t']);
-					$('#contact > p').fadeIn();		    		
+		    	$('#information > p').fadeOut(function(){
+					$('#information > p').html(data['feed']['media$group']['media$description']['$t']);
+					$('#information > p').fadeIn();		    		
 		    	})
 	    	}	
 		},
 	    // If error.
 		error:function(errorData) {
-			console.log("There seems to be an error fetching the contact details. " + errorData.error);
-	    	$('#contact > p').fadeOut(function(){
-				$('#contact > p').text('Ingen kontaktinformation hittades');
-				$('#contact > p').fadeIn();		    		
+			console.log("There seems to be an error fetching the project details. " + errorData.error);
+	    	$('#information > p').fadeOut(function(){
+				$('#information > p').text('Ingen beskrivning hittades');
+				$('#information > p').fadeIn();		    		
 	    	})			
 		}
 	});	

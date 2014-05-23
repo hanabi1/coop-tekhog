@@ -42,9 +42,6 @@ class Movies extends Controller
         header('Content-Type: application/json; charset=utf-8');        
         $movieModel = $this->loadModel('MoviesModel');   
         
-                //we have to set timezone to Europe/Stockholm
-        date_default_timezone_set('Europe/Stockholm');
-
         //requiring FB PHP SDK
         require_once('application/tools/facebook-sdk/src/facebook.php');
 
@@ -74,7 +71,7 @@ class Movies extends Controller
          *-start_time >= now() is used to show upcoming events only
          */
         $fql = "SELECT
-                    name, pic, start_time, end_time, location, description
+                    eid, name, pic, start_time, end_time, location, description
                 FROM
                     event
                 WHERE
@@ -94,33 +91,24 @@ class Movies extends Controller
          
         //looping through retrieved data
         for($i=0; $i < count($fqlResult); $i++) { 
-            # code...
-            /*
-             * see here http://php.net/manual/en/function.date.php
-             * for the date format I used.
-             * The pattern string I used 'l, F d, Y g:i a'
-             * will output something like this: July 30, 2015 6:30 pm
-             */
-         
-            /*  
-             * getting start date,
-             * 'l, F d, Y' pattern string will give us
-             * something like: Thursday, July 30, 2015
-             */
-            $start_date = date( 'l, F d, Y', strtotime($values['start_time']) );
+
+            setlocale( LC_TIME, 'sv_SE.ISO_8859-1'); 
+
+            $start_date = strftime('Den %e %B', $fqlResult[$i]['start_time'] );
          
             /*
              * getting 'start' time
              * 'g:i a' will give us something
              * like 6:30 pm
              */
-            $start_time = date( 'g:i a', $values['start_time'] );
+            $start_time = strftime('%H:%M', $fqlResult[$i]['start_time'] );
 
             $events = array();
-            $events[$i] = array('name' => $fqlResult[$i]['name'],
-                                'startdate' => $startdate,
+            $events[$i] = array('eid' => $fqlResult[$i]['eid'],
+                                'name' => $fqlResult[$i]['name'],
+                                'startdate' => $start_date,
                                 'starttime' => $start_time,
-                                'description' => $fqlResult[$i]['description'],
+                                'description' => nl2br($fqlResult[$i]['description']),
                                 'pic' => $fqlResult[$i]['pic']);
 
 

@@ -22,6 +22,7 @@ define('YOUTUBE_DELAY', 0);
  * Enter CustomersPlaylist ID
  * Do not include "PL" that is usually in the beginning of a Playlist ID
  *
+ * TEST PLAYLIST ID: ETsGmQ-25bTg_X1BPDyIU_zHPn2dm0XF
  * LIVE PLAYLIST ID: SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx
  */
 define('YOUTUBE_PLAYLIST_ID' , 'SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx'); //<- test id!
