@@ -38,6 +38,13 @@ h3 {
   letter-spacing: 0.08em;
   font-family: 'Oswald', sans-serif;
 }
+h4 {
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  font-family: 'Oswald', sans-serif;
+}
 
 /* NAVIGATION
 ---------------------------------------------------------*/
@@ -99,12 +106,55 @@ nav a {
 /* CONTENT
 ---------------------------------------------------------*/
 
+#eventbox{
+  display: inline-block; 
+  clear: both;
+  width: 100%;
+  padding: 60px; 
+  color: #f1f1f1;
+  background-color: rgb(53, 56, 65);
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.5;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 18px;
+}
+
+#eventbox > div {
+  display: inline-block; 
+  width:100%;
+}
+
+#eventbox > div > div{
+  margin-bottom: 20px;
+  width:50%;
+}
+#eventbox strong{
+  font-weight: bold;
+}
+.event-right{
+  float:right;
+}
+
+.event-left{
+  padding-right:20px;  
+  float:left;
+}
+
+hr{
+  border-color:rgb(86, 95, 97);
+  width:15%;
+  float:left;
+  padding-bottom: 20px;
+}
+
 .play-icon{
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   height: 100px;
-  width: 100px;
+  width: 100px;s
   z-index: 10000;
 }
 
@@ -113,6 +163,7 @@ nav a {
   width:100%;
   margin: 0;
   padding: 0;
+  max-height: 600px!important;
 }
 
 .bxslider > .slide{

@@ -32,7 +32,7 @@
      varsin film till denna antologi. Så titta, sprid, samtala och förändra!
   </p>
 </div>
-<div class="info-box" id="event">
+<div id="eventbox">
   <h3>Event</h3>
   <p>
   </p>

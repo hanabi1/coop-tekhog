@@ -47,8 +47,8 @@ class Movies extends Controller
 
         //initializing keys
         $facebook = new Facebook(array(
-            'appId'  => '251234321726333',
-            'secret' => 'a793d6f12a3f87f0029e432be8dd3bec',
+            'appId'  => FB_APP_ID,
+            'secret' => FB_SECRET_KEY,
             'cookie' => true
         ));
 
@@ -75,7 +75,7 @@ class Movies extends Controller
                 FROM
                     event
                 WHERE
-                    eid IN ( SELECT eid FROM event_member WHERE uid = 1380611578866107 )
+                    eid IN ( SELECT eid FROM event_member WHERE uid = " . FB_PAGE_UID .")
                 AND
                     start_time >= now()
                 ORDER BY
@@ -88,26 +88,25 @@ class Movies extends Controller
         );
          
         $fqlResult   =   $facebook->api($param);
-         
+        $events = array();
         //looping through retrieved data
         for($i=0; $i < count($fqlResult); $i++) { 
 
             setlocale( LC_TIME, 'sv_SE.ISO_8859-1'); 
 
             $start_date = strftime('Den %e %B', $fqlResult[$i]['start_time'] );
-         
-            /*
-             * getting 'start' time
-             * 'g:i a' will give us something
-             * like 6:30 pm
-             */
             $start_time = strftime('%H:%M', $fqlResult[$i]['start_time'] );
-
-            $events = array();
+            
+            $end_date = strftime('Den %e %B', $fqlResult[$i]['end_time'] );
+            $end_time = strftime('%H:%M', $fqlResult[$i]['end_time'] );
+            
             $events[$i] = array('eid' => $fqlResult[$i]['eid'],
                                 'name' => $fqlResult[$i]['name'],
+                                'location' => $fqlResult[$i]['location'],
                                 'startdate' => $start_date,
                                 'starttime' => $start_time,
+                                'enddate' => $end_date,
+                                'endtime' => $end_time,
                                 'description' => nl2br($fqlResult[$i]['description']),
                                 'pic' => $fqlResult[$i]['pic']);
 

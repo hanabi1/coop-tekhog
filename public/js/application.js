@@ -155,33 +155,74 @@ function loadEvents(){
 	    success:function (data) {
 	    	//If ajax call was successfull but no/wrong data was returned show error
 	    	if(typeof data === 'undefined' || !data){
-		    	$('#event > p').fadeOut(function(){
-					$('#event > p').text('Evenemangen kommer snart');
-					$('#event > p').fadeIn();		    		
+		    	$('#eventbox').fadeOut(function(){
+					$('#eventbox > p').text('Evenemangen kommer snart');
+					$('#eventbox > p').fadeIn();		    		
 		    	})	
 	    	//Everything good! Show description
 	    	}else{
-		    	$('#event > p').fadeOut(function(){
-					for(var i=0;i<data.length;i++){
-						var stycke;
 
-						stycke = '<h4><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' +data[i]['name'] + '">' + data[i]['name'] + '</a></h4>' + 
-								 '<small>' + data[i]['startdate'] + ' ' + data[i]['starttime'] + '</small><br><br>' +
-								 '<p>' + data[i]['description'] + '</p>' +
-								 '<br><p><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' + data[i]['name'] + '">(Länk till Eventet) ' + '</a></p>'
-									
-						$('#event > p').html(stycke);
+				//If we have more then one event we need to create rows with two columns
+				//and place the events divs in them.
+				if(data.length > 1){
+					var rowNbr = 0;
+					for(var i=0;i<data.length;i++){
+						
+
+						var paragraph = '<h4><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' +data[i]['name'] + '">' + data[i]['name'] + '</a></h4><br>' + 
+										'<small>' + data[i]['startdate'] + ' ' + data[i]['starttime'] + ' - ' + data[i]['endtime'] + '</small><br>' +
+										'<small>' + data[i]['location'] + '</small><br><br>' +
+										'<p>' + data[i]['description'] + '</p>' +
+										'<br><p><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' + data[i]['name'] + '"><strong>Länk till Eventet</strong>' + '</a></p>'
+
+						var alignment = '';
+
+						//when i is even send the div to the right
+						//when i is odd send it to the left			
+						if(i % 2 == 0){
+							
+							alignment = 'event-left';
+							
+							rowNbr += 1;
+							//If this is not the first row then add a divider line
+							if(rowNbr != 1){
+								$('#eventbox').append('<hr>');
+							}
+							
+							//Create a new row for two events
+							$('#eventbox').append('<div class="row-' + rowNbr +'" style="display:none;"></div>');
+						
+						}else{
+							alignment = 'event-right';
+						}
+						
+						//Create the eventdiv with the proper allignment and the event paragraph
+						var eventDiv = '<div class="' + alignment + '">' + paragraph + '</div>';
+
+						//Appends the eventdiv the the current row
+						$('#eventbox > .row-' + rowNbr).append(eventDiv).fadeIn();
 					}
-					$('#event > p').fadeIn();		    		
-		    	})
+
+				//We only have one event so we just center it. Easy =)
+				}else{
+						var paragraph = '<h4><a href="http://www.facebook.com/events/' + data[0]['eid'] +'" title="' +data[0]['name'] + '">' + data[0]['name'] + '</a></h4><br>' + 
+										'<small>' + data[0]['startdate'] + ' ' + data[0]['starttime'] + ' - ' + data[0]['endtime'] + '</small><br>' +
+										'<small>' + data[0]['location'] + '</small><br><br>' +
+										'<p>' + data[0]['description'] + '</p>' +
+										'<br><p><a href="http://www.facebook.com/events/' + data[0]['eid'] +'" title="' + data[0]['name'] + '"><strong>Länk till Eventet</strong>' + '</a></p>'					
+					
+					$('#eventbox').append('<div style="display:none;"></div')
+					$('#eventbox > div').append(paragraph).fadeIn();
+				}   		
+
 	    	}	
 		},
 	    // If error.
 		error:function(errorData) {
 			console.log("There seems to be an error fetching the event list. " + errorData.error);
-	    	$('#event > p').fadeOut(function(){
-				$('#event > p').text('Evenemangen kommer snart');
-				$('#event > p').fadeIn();		    		
+	    	$('#eventbox > p').fadeOut(function(){
+				$('#eventbox > p').text('Evenemangen kommer snart');
+				$('#eventbox > p').fadeIn();		    		
 	    	})			
 		}
 	});	
