@@ -174,9 +174,13 @@ function loadEvents(){
 					var rowNbr = 0;
 					for(var i=0;i<data.length;i++){
 						
+						//If there is a end_time add a little formatting to it
+						if(data[i]['end_time']){
+							data[i]['end_time'] = ' - ' + data[i]['end_time'];
+						}
 
 						var paragraph = '<h4><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' +data[i]['name'] + '">' + data[i]['name'] + '</a></h4><br>' + 
-										'<small>' + data[i]['startdate'] + ' ' + data[i]['starttime'] + ' - ' + data[i]['endtime'] + '</small><br>' +
+										'<small>' + data[i]['start_date'] + ' ' + data[i]['start_time'] + data[i]['end_time'] + '</small><br>' +
 										'<small>' + data[i]['location'] + '</small><br><br>' +
 										'<p>' + data[i]['description'] + '</p>' +
 										'<br><p><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' + data[i]['name'] + '"><strong>Länk till Eventet</strong>' + '</a></p>'
@@ -211,8 +215,13 @@ function loadEvents(){
 
 				//We only have one event so we just center it. Easy =)
 				}else{
+						//If there is a end_time add a little formatting to it
+						if(data[0]['end_time']){
+							data[0]['end_time'] = ' - ' + data[0]['end_time'];
+						}
+	
 						var paragraph = '<h4><a href="http://www.facebook.com/events/' + data[0]['eid'] +'" title="' +data[0]['name'] + '">' + data[0]['name'] + '</a></h4><br>' + 
-										'<small>' + data[0]['startdate'] + ' ' + data[0]['starttime'] + ' - ' + data[0]['endtime'] + '</small><br>' +
+										'<small>' + data[0]['start_date'] + ' ' + data[0]['start_time'] + data[0]['end_time'] + '</small><br>' +
 										'<small>' + data[0]['location'] + '</small><br><br>' +
 										'<p>' + data[0]['description'] + '</p>' +
 										'<br><p><a href="http://www.facebook.com/events/' + data[0]['eid'] +'" title="' + data[0]['name'] + '"><strong>Länk till Eventet</strong>' + '</a></p>'					

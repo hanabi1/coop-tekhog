@@ -89,28 +89,33 @@ class Movies extends Controller
          
         $fqlResult   =   $facebook->api($param);
         $events = array();
+        
         //looping through retrieved data
         for($i=0; $i < count($fqlResult); $i++) { 
 
-            setlocale( LC_TIME, 'sv_SE.ISO_8859-1'); 
+            setlocale( LC_ALL, 'sv_SE.utf8' );
 
-            $start_date = strftime('Den %e %B', $fqlResult[$i]['start_time'] );
-            $start_time = strftime('%H:%M', $fqlResult[$i]['start_time'] );
-            
-            $end_date = strftime('Den %e %B', $fqlResult[$i]['end_time'] );
-            $end_time = strftime('%H:%M', $fqlResult[$i]['end_time'] );
-            
-            $events[$i] = array('eid' => $fqlResult[$i]['eid'],
-                                'name' => $fqlResult[$i]['name'],
-                                'location' => $fqlResult[$i]['location'],
-                                'startdate' => $start_date,
-                                'starttime' => $start_time,
-                                'enddate' => $end_date,
-                                'endtime' => $end_time,
-                                'description' => nl2br($fqlResult[$i]['description']),
-                                'pic' => $fqlResult[$i]['pic']);
+            //If there is a start time THEN add a end time too. (we dont want just an end time =)
+            //Convert both if they are valid
+            if(isset($fqlResult[$i]['start_time']) && $fqlResult[$i]['start_time']){
+                $fqlResult[$i]['start_date'] = strftime('Den %e %B', date("U",strtotime($fqlResult[$i]['start_time'])));
+                $fqlResult[$i]['start_time'] = strftime('%H:%M', date("U",strtotime($fqlResult[$i]['start_time'])));
+                    
+                if(isset($fqlResult[$i]['end_time']) && $fqlResult[$i]['end_time']){                     
+                    $fqlResult[$i]['end_date'] = strftime('Den %e %B', date("U",strtotime($fqlResult[$i]['end_time'])));
+                    $fqlResult[$i]['end_time'] = strftime('%H:%M', date("U",strtotime($fqlResult[$i]['end_time'])));
+                }
+            }
+            $events[$i]=array();
 
-
+            foreach ($fqlResult[$i] as $key => $value) {
+                //If the events properties are valid and plays nice add it to the event array
+                if(isset($value) && !trim($value) == '' && !is_nan($value) && !is_null($value) ){
+                    $events[$i][$key] = ucfirst($value);
+                }else{
+                    $events[$i][$key] = '';
+                }
+            }
         }
 
         //Print out the movies as JSON so the client can recieve them
