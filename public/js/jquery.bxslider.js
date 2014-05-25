@@ -80,8 +80,12 @@
 		onSliderLoad: function() {},
 		onSlideBefore: function() {},
 		onSlideAfter: function() {},
-		onSlideNext: function() {},
-		onSlidePrev: function() {}
+		onSlideNext: function() {
+			resetVideoPlayersToThumbnails();
+		},
+		onSlidePrev: function() {
+			resetVideoPlayersToThumbnails();										
+		}
 	}
 
 	$.fn.bxSlider = function(options){

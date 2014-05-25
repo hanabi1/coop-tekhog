@@ -159,11 +159,12 @@ hr{
 }
 
 /*Thumbnail*/
-.bxslider > .slide > .video-thumbnail {
+.bxslider > .slide > img.video-thumbnail {
   width:100%;
   margin: 0;
   padding: 0;
-  max-height: 600px!important;
+  max-height: 600px!important;    /*This fixes weird white box on thumbnail click*/
+  display:inline-block!important;
 }
 
 .bxslider > .slide{

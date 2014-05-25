@@ -51,7 +51,7 @@ function renderData (movies) {
 			
 			//(this). returns the <img> that was clicked. We cant put the video into the image....
 			//So we replace the content in the parent of <img> ie the <li>!
-			$(this).parent().html('<iframe width="100%" height="600px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1;autoplay=1" frameborder="0" allowfullscreen></iframe>');
+			$(this).parent().html('<iframe id="' + videoID +'"class="video-player" width="100%" height="600px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1;autoplay=1" frameborder="0" allowfullscreen></iframe>');
 			
 		});
 		// Add the titles+author to div with ID bx-pager.
@@ -95,11 +95,17 @@ function clickhandler () {
 		//Get the movie title from the links ID and call loadDescription()
 		var machineTitle = $(this).attr('id')
 		loadDescription(machineTitle);
-
+		
+		//Reset all playing movies on slide change
+		resetVideoPlayersToThumbnails();
+		
 		//Slide the correct movie into place
 		$('html, body').animate({
 			scrollTop: $( $(this).attr('href') ).offset().top
 		}, 600);
+
+		
+
 		return false;
 	});
 }
@@ -266,4 +272,29 @@ function loadProjectInformation(){
 function getMachineTitleFromLink(){
 	/*Broken since link no longer get the .active class*/
 	return $('#bx-pager > a.active').attr('id');
+}
+
+function resetVideoPlayersToThumbnails(){
+
+
+	//If we find any iframes with the class .videolpayer then we switch 'em to images again!
+	var videoID = $('.video-player').attr('id');
+	
+	if(videoID){
+
+		//Transform our youtubevideo into a thumbnail image again
+		$('.video-player').parent().html('<li class="slide"><img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg"></li>');
+		
+		//Rebind the clickhandler so that if we click on our thumbnail again. It will be a youtube movie
+		$('#' + videoID).click(function(){
+		
+			//The movies variable in renderData() is no longer available when this thumbnail is clicked.
+			//So we get the Youtube video ID from the ID Hashtag instead of the movie variable! 
+			var videoID = $(this).attr('id');
+			
+			//(this). returns the <img> that was clicked. We cant put the video into the image....
+			//So we replace the content in the parent of <img> ie the <li>!
+			$(this).parent().html('<iframe id="' + videoID +'"class="video-player" width="100%" height="600px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1&autoplay=1&enablejsapi=1&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>');
+		});
+	}
 }
