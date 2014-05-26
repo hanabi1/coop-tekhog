@@ -110,7 +110,7 @@ class Movies extends Controller
 
             foreach ($fqlResult[$i] as $key => $value) {
                 //If the events properties are valid and plays nice add it to the event array
-                if(isset($value) && !trim($value) == '' && !is_nan($value) && !is_null($value) ){
+                if(isset($value) && !trim($value) == '' && !is_nan(intval($value)) && !is_null($value) ){
                     $events[$i][$key] = ucfirst($value);
                 }else{
                     $events[$i][$key] = '';

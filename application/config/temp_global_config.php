@@ -11,7 +11,7 @@
 
 // Test FB Page --- 570407576409153
 // Live FB Page --- 1380611578866107
-define('FB_PAGE_UID',570407576409153);
+define('FB_PAGE_UID','570407576409153');
 
 //The App ID and Secret key below is the test apps id
 //251234321726333  ---  a793d6f12a3f87f0029e432be8dd3bec
