@@ -54,22 +54,7 @@ function renderData (movies) {
 			$(this).parent().html('<iframe id="' + videoID +'"class="video-player" width="100%" height="600px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1;autoplay=1" frameborder="0" allowfullscreen></iframe>');
 			
 		});
-		// Add the titles+author to div with ID bx-pager.
-		/* The best solution but the jQuery slider doesn't allow us to change the DOM structure links live in
-		if(i < 5) {
 
-			$('.left-column').append(
-				'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
-			);
-     	}else{ 
-     
-			$('.right-column').append(
-				'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
-			);
-    	}
-    	*/
-
-    	/*So were forced to work in a single div instead of a two column div system*/
     	$('#bx-pager').append(
 			'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
 		);
@@ -125,7 +110,7 @@ function loadDescription(machineTitle){
 		// If successfull, run our renderData function and send the data (a JSON-object) to it.
 	    success:function (data) {
 	    	//If ajax call was successfull but no/wrong data was returned show error
-	    	if(typeof data[0]['description'] === 'undefined' || !data[0]['description']){
+	    	if(typeof data[0] === 'undefined' || typeof data[0]['description'] === 'undefined'){
 		    	$('#moviedescription > p').fadeOut(function(){
 					$('#moviedescription > p').text('Ingen info finns');
 					$('#moviedescription > p').fadeIn();		    		
@@ -133,7 +118,7 @@ function loadDescription(machineTitle){
 	    	//Everything good! Show description
 	    	}else{
 		    	$('#moviedescription > p').fadeOut(function(){
-					$('#moviedescription > p').text(data[0]['description']);
+					$('#moviedescription > p').html(data[0]['description']);
 					$('#moviedescription > p').fadeIn();		    		
 		    	})
 	    	}	
