@@ -5,7 +5,7 @@
 		     	<li><a href="#movies">Filmer</a></li>
 		        <li><a href="#moviemakers">Filmskapare</a></li>
 		        <li><a href="#information">Information</a></li>
-		        <li><a href="#eventbox">Event</a></li>
+		        <li><a href="#eventbox">Visningar</a></li>
 		        <li><a href="#contact">Kontakt</a></li>
 		     </ul>
 	  	</nav>

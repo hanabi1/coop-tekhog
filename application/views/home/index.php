@@ -33,7 +33,7 @@
   </p>
 </div>
 <div id="eventbox">
-  <h3>Event</h3>
+  <h3>Visningar <!--<img src="public/img/facebook.png">--></h3>
   <p>
   </p>
 </div>
