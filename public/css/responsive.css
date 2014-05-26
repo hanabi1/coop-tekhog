@@ -44,6 +44,16 @@ nav a {
   color: #f1f1f1;
 }
 
+#bx-pager > a:nth-child(even) {
+  float: none;
+  width: 100%;
+}
+
+#bx-pager > a:nth-child(odd){
+  float: none;
+  width: 100%;
+}
+
 /* BANNER */  
 .banner {
     position: relative;
