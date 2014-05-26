@@ -130,7 +130,13 @@ nav a {
 #eventbox > div > div{
   margin-bottom: 20px;
   width:50%;
+  padding-bottom: 30px;
+  border-bottom:1px solid rgb(86, 95, 97);
 }
+#eventbox > div:last-child > div{
+  border-bottom: none;
+}
+
 #eventbox strong{
   font-weight: bold;
 }
@@ -141,13 +147,6 @@ nav a {
 .event-left{
   padding-right:20px;  
   float:left;
-}
-
-hr{
-  border-color:rgb(86, 95, 97);
-  width:15%;
-  float:left;
-  padding-bottom: 20px;
 }
 
 .play-icon{
