@@ -70,16 +70,16 @@ class Movies extends Controller
          *-Yes, you fanpage automatically becomes an event_member once it creates an event
          *-start_time >= now() is used to show upcoming events only
          */
-        $fql = "SELECT
+        $fql = 'SELECT
                     eid, name, pic, start_time, end_time, location, description
                 FROM
                     event
                 WHERE
-                    eid IN ( SELECT eid FROM event_member WHERE uid = " . FB_PAGE_UID .")
+                    eid IN ( SELECT eid FROM event_member WHERE uid = "' . FB_PAGE_UID .'")
                 AND
                     start_time >= now()
                 ORDER BY
-                    start_time desc";
+                    start_time desc';
          
         $param  =   array(
             'method'    => 'fql.query',
