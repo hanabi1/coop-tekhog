@@ -24,10 +24,7 @@
         
         <!-- CSS -->
         <link href="<?php echo URL; ?>public/css/meyerReset.css" rel="stylesheet">
-        <link href="<?php echo URL; ?>public/css/jquery.bxslider.css" rel="stylesheet">
-        <link href="<?php echo URL; ?>public/css/jquery-ui.css" rel="stylesheet">
         <link href="<?php echo URL; ?>public/css/style_prelaunch.css" rel="stylesheet">
-        <link href="<?php echo URL; ?>public/css/css.less" rel="stylesheet">
         
         <!-- Google Fonts -->        
         <link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>
@@ -35,12 +32,6 @@
         
         <!-- JavaScript -->
         <script src="<?php echo URL; ?>public/js/application_prelaunch.js"></script>
-        
-        <!-- Videoslider script -->
-        <script src="<?php echo URL; ?>public/js/jquery.bxslider.js"></script>
-        <script src="<?php echo URL; ?>public/js/jquery.bxslider.min.js"></script>
-        <script src="<?php echo URL; ?>public/js/jquery.easing.1.3.js"></script>
-        <script src="<?php echo URL; ?>public/js/jquery.fitvids.js"></script>
 
         <!--Google Analytics-->
         <script>

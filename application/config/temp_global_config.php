@@ -29,4 +29,4 @@ define('FB_SECRET_KEY','a793d6f12a3f87f0029e432be8dd3bec');
 define('YOUTUBE_PLAYLIST_ID' , 'SwXUlPkaY_FZ7R9AsTo1yJi7wRthcBtx'); //<- test id!
 
 //If constant is false then countdown timer is visible and everything else hidden.
-define('IS_SITE_LAUNCHED',TRUE);
+define('IS_SITE_LAUNCHED',FALSE);
