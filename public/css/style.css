@@ -180,6 +180,12 @@ nav a {
   display:inline-block!important;
   background-color: #000;
 }
+.bxslider > .slide > img.small-thumbnail {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #000;
+  max-height: 600px!important;
+}
 
 .bxslider > .slide{
   background-color: transparent;
