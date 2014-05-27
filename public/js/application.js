@@ -38,7 +38,7 @@ function renderData (movies) {
 		$('.bxslider').append(
 			
 			// We give the thumbnail img a #id that is the same as the Youtube ID.
-			'<li class="slide"><img id="' + movies[i].link + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + movies[i].link + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this)"></li>'
+			'<li class="slide"><img id="' + movies[i].link + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + movies[i].link + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this);" ondragstart="return false;" ondrop="return false;"></li>'
 
 		);
 		
@@ -292,7 +292,7 @@ function resetVideoPlayersToThumbnails(){
 	if(videoID){
 
 		//Transform our youtubevideo into a thumbnail image again
-		$('.video-player').parent().html('<img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this)">');
+		$('.video-player').parent().html('<img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this);" ondragstart="return false;" ondrop="return false;">');
 		
 		//Rebind the clickhandler so that if we click on our thumbnail again. It will be a youtube movie
 		$('#' + videoID).click(function(){
@@ -308,7 +308,7 @@ function resetVideoPlayersToThumbnails(){
 	}
 }
 
-function checkAndFixMissingImg(img){
+function checkAndFixMissingImg(img=''){
 	if(!img){
 		console.log('Nothing passed to checkAndFixMissingImg');
 		return;
@@ -319,5 +319,10 @@ function checkAndFixMissingImg(img){
 		console.log(img.id + 'didnt have the specified thumbnail resolution, trying with lower res version');
 		img.src = 'http://img.youtube.com/vi/' + img.id + '/hqdefault.jpg';
 		img.className = 'small-thumbnail';
+		
+		//Theese two lines prevent you from dragging the image around with the mousebutton held down.
+		img.ondragstart ="return false;";
+		img.ondrop="return false;";
+
 	}
 }
