@@ -292,7 +292,7 @@ function resetVideoPlayersToThumbnails(){
 	if(videoID){
 
 		//Transform our youtubevideo into a thumbnail image again
-		$('.video-player').parent().html('<li class="slide"><img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg"></li>');
+		$('.video-player').parent().html('<li class="slide"><img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this)"></li>');
 		
 		//Rebind the clickhandler so that if we click on our thumbnail again. It will be a youtube movie
 		$('#' + videoID).click(function(){
@@ -313,24 +313,7 @@ function checkAndFixMissingImg(img){
 	img.onload = '';
 	if(img.naturalHeight == 90 && img.naturalWidth == 120){
 		console.log(img.id + 'didnt have the specified thumbnail resolution, trying with lower res version');
-		img.src = 'http://img.youtube.com/vi/' + img.id + '/hqdefault.jpg'
-		img.class = 'small-thumbnails'
-		//When img is loaded again check if the lower resolution was a 404 aswell
-		img.onload(function(){
-			if(this.naturalHeight == 90 && this.naturalWidth == 120){
-				this.src = 'http://img.youtube.com/vi/' + this.id + '/mqdefault.jpg'
-				//When meduim quality thumbail is loaded check if it exists
-				this.onload(function(){
-					//If mqdefault wasn available either then return the lowest possible defailt resolution
-					if(this.naturalHeight == 90 && this.naturalWidth == 120){
-						this.src = 'http://img.youtube.com/vi/' + this.id + '/default.jpg'
-						img.onload = '';
-						return this;
-					}
-				})
-			}else{
-				return img;
-			}
-		})
+		img.src = 'http://img.youtube.com/vi/' + img.id + '/hqdefault.jpg';
+		img.class = 'small-thumbnails';
 	}
 }
