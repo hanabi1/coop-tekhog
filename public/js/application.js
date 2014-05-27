@@ -308,11 +308,7 @@ function resetVideoPlayersToThumbnails(){
 	}
 }
 
-function checkAndFixMissingImg(img=''){
-	if(!img){
-		console.log('Nothing passed to checkAndFixMissingImg');
-		return;
-	}
+function checkAndFixMissingImg(img){
 	//the 404 image size is 120*40. If we find one try a lower resolution 
 	img.onload = '';
 	if(img.naturalHeight == 90 && img.naturalWidth == 120){
