@@ -9,9 +9,17 @@
 }
 
 @media screen and (max-width: 1024px) {
+    /*Thumbnail*/
+.bxslider > .slide > img.video-thumbnail {
+  max-height: 530px!important;    /*This fixes weird white box on thumbnail click*/
+}
 }
 
 @media screen and (max-width: 960px) {
+    /*Thumbnail*/
+.bxslider > .slide > img.video-thumbnail {
+  max-height: 450px!important;    /*This fixes weird white box on thumbnail click*/
+}
 }
 
 @media only screen 
@@ -21,9 +29,18 @@ and (orientation : portrait) {
 }
 
 @media screen and (max-width: 767px) {
+      /*Thumbnail*/
+.bxslider > .slide > img.video-thumbnail {
+  max-height: 400px!important;    /*This fixes weird white box on thumbnail click*/
+}
 }
 
 @media screen and (max-width: 640px) {
+/*Thumbnail*/
+.bxslider > .slide > img.video-thumbnail {
+  max-height: 355px!important;    /*This fixes weird white box on thumbnail click*/
+}
+
 /* NAV MENU */
 nav {
   padding: 10px 0 5px 5px;
@@ -85,6 +102,10 @@ nav a {
 }
 
 @media screen and (max-width: 560px) {
+/*Thumbnail*/
+.bxslider > .slide > img.video-thumbnail {
+  max-height: 310px!important;    /*This fixes weird white box on thumbnail click*/
+}
 }
 
 @media only screen 
@@ -94,10 +115,18 @@ and (orientation : landscape) {
 }
 
 @media screen and (max-width: 443px) {
+/*Thumbnail*/
+.bxslider > .slide > img.video-thumbnail {
+  max-height: 245px!important;    /*This fixes weird white box on thumbnail click*/
+}
 
 }
 
 @media screen and (max-width: 360px) {
+/* THUMBNAIL */
+.bxslider > .slide > img.video-thumbnail {
+  max-height: 195px!important;    /*This fixes weird white box on thumbnail click*/
+} 
   /* NAV MENU */
 nav {
   padding: 4px 0 5px 5px;
@@ -107,9 +136,7 @@ nav {
 nav a {
   font-size: 10px;
 }
-
-/* HEADER BANNER
----------------------------------------------------------*/
+/* HEADER BANNER */
 .banner img {
   max-width: 100%;
   margin: 0 auto 80px auto;
