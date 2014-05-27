@@ -70,6 +70,20 @@ nav a {
   padding-right: 10%;
   padding-bottom: 30px;
 }
+
+.event-left {
+  float: none;
+}
+
+.event-right {
+  float: none;
+}
+
+#eventbox > div > div {
+  width: 100%;
+}
+
+
 }
 
 @media screen and (max-width: 560px) {
