@@ -8,7 +8,6 @@ html {
 body {
   max-width: 100%;
   background-color: #000;
-  font-family: 'Open Sans', sans-serif;
 }
 
 img {
@@ -19,6 +18,7 @@ a {
   color: #f1f1f1;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
+  font-size: 16px;
 }
 
 a:hover {
@@ -27,21 +27,24 @@ a:hover {
 }
 
 p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
   font-weight: 300;
+  letter-spacing: 1px;
 }
 
 h3 {
   padding-bottom: 20px;
   font-family: inherit;
   font-weight: 300;
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: 0.08em;
   font-family: 'Oswald', sans-serif;
 }
 h4 {
   font-family: inherit;
   font-weight: 300;
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: 0.08em;
   font-family: 'Oswald', sans-serif;
 }
@@ -118,7 +121,6 @@ nav a {
   line-height: 1.5;
   padding-left: 10%;
   padding-right: 10%;
-  font-size: 18px;
   background-color: #35383d;
   font-family: 'Open Sans', sans-serif;
 }
@@ -139,8 +141,18 @@ nav a {
 }
 
 #eventbox strong{
-  font-weight: bold;
+  font-weight: 400;
+  font-size: 16px;
 }
+#eventbox small {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+#eventbox h4 a {
+  font-size: 20px;
+}
+
 .event-right{
   float:right;
 }
@@ -196,7 +208,7 @@ nav a {
   padding-left: 10%;
   padding-right: 10%;
   font-size: 18px;
-  margin-top: -100px;
+  margin-top: -60px;
 }
 
 #bx-pager > a{
