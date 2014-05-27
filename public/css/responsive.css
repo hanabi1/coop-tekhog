@@ -3,12 +3,16 @@
 }
 
 @media screen and (max-width: 1280px) {
+
 }
 
 @media screen and (max-width: 1152px) {
 }
 
 @media screen and (max-width: 1024px) {
+  p {
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 960px) {
@@ -16,7 +20,6 @@ nav a {
   font-size: 20px;
 }
 }
-
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
