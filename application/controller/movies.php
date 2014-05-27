@@ -34,7 +34,7 @@ class Movies extends Controller
         header('Content-Type: application/json; charset=utf-8');        
         $movieModel = $this->loadModel('MoviesModel');   
        
-        echo json_encode($movieModel->getAllMoviesFromAPI(),JSON_UNESCAPED_UNICODE);
+        echo json_encode($movieModel->getAllMoviesFromAPI());
     }
     
     public function getMovieEvents()

@@ -1,0 +1,229 @@
+/* HTML, BODY & COMMONS
+---------------------------------------------------------*/
+html { 
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+} 
+
+body {
+  max-width: 100%;
+  background-color: #000;
+  font-family: 'Open Sans', sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+a:link {
+  background-color: transparent !important;
+}
+
+a {
+  font-size: 18px !important;
+  color: #f1f1f1 !important;
+  letter-spacing: 1px !important;
+  line-height: 1.5 !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 400 !important;
+  text-decoration: none !important;
+  background-color: transparent;
+}
+
+a:hover {
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+p {
+  font-weight: 300;
+}
+
+h3 {
+  padding-bottom: 20px;
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+/* NAVIGATION
+---------------------------------------------------------*/
+
+nav {
+  width: 100%;
+  clear: both;
+  background-color: #8b9c92;
+  padding: 10px 0 10px 20px;
+  position: fixed;
+  z-index: 9999;
+  box-shadow: 0px 2px 5px #4a524d;
+  /*word-spacing: 40px;*/
+  letter-spacing: 1px;
+  /*padding-left: 40px;*/
+  text-align: right;
+  padding-right: 30px;
+  display: none;
+}
+/* #e4eeea */
+/* a8b0ab */
+nav li {
+  list-style: none;
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  margin-right: 15px;
+  line-height: 30px;
+  text-align: center;
+  color: #000;
+  display: none;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: #f1f1f1;
+  display: none;
+}
+
+/* HEADER BANNER
+---------------------------------------------------------*/
+
+.banner {
+    position: relative;
+    background-image: url(../img/imagetest.jpg);
+    background-size: 100%;
+    height: 100vh; 
+    text-align: center;
+}
+
+.banner img {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+#header-contact{
+  width:100%;
+  text-align: center;
+  position: relative;
+}
+#header-contact > a{  
+  display:inline-block;
+  text-decoration: none;
+}
+/* CONTENT
+---------------------------------------------------------*/
+
+.play-icon{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  height: 100px;
+  width: 100px;
+  z-index: 10000;
+  display: none;
+}
+
+/*Thumbnail*/
+.bxslider > .slide > .video-thumbnail{
+  width:90%;
+  height:400px;
+  margin-left: 5%;  /*This margin makes the next/previus arrows on the slider more visible*/
+  display: none;
+}
+
+.bxslider > .slide{
+  background-color: black;
+  display: none;
+}
+
+.movies-box {
+  width: 100%;
+  background-color: #101010;
+  color: #fff;
+  text-align: center;
+  display: none;
+}
+
+.moviemakers-box {
+  width: 100%;
+  padding: 60px; 
+  background-color: #5c625f;
+  color: #fff;
+  clear: both;
+  margin: 0 auto;
+  display: none;
+}
+
+#bx-pager > a{
+ 
+  display: inline-block;
+  text-transform:capitalize;
+  display: none;
+}
+
+#bx-pager > a:nth-child(even) {
+  float: left;
+  width: 50%;
+  display: none;
+}
+
+#bx-pager > a:nth-child(odd){
+  float: right;
+  width: 50%;
+  display: none;
+}
+
+.clear { 
+  clear: both; 
+  display: none;
+}
+
+.info-box {
+  margin: 0 auto;
+  clear: both;
+  width: 100%;
+  padding: 60px; 
+  color: #f1f1f1;
+  background-color: #3d4146;
+  margin: 0 auto;
+  text-align: center;
+  display: none;
+}
+
+.contact-box {
+  margin: 0 auto;
+  clear: both;
+  width: 100%;
+  padding: 60px; 
+  background-color: #2f3236;
+  text-align: center;
+  color: #f1f1f1;
+  display: none;
+}
+
+/* MOVIE WRAPPER
+---------------------------------------------------------*/
+
+.wrap {
+  width: 100%;
+  margin: 0px auto 0px;
+  display: none;
+}
+
+.wrap p {
+  margin: 0 auto;
+  color: #fff;
+  padding: 2px 0 8px 0;
+  font-size: 16px
+}
+
+.wrap p:hover {
+  opacity: 0.55;
+  display: none;
+}
+

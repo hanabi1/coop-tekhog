@@ -16,10 +16,19 @@ class Home extends Controller
      */
     public function index()
     {
-        // load views. within the views we can echo out $songs and $amount_of_songs easily
-        echo $this->dressTemplate('/_templates/head', array('title'=> $this->pageTitle));        
-        require 'application/views/_templates/header.php';
-        require 'application/views/home/index.php';
-        require 'application/views/_templates/footer.php';
+        if(IS_SITE_LAUNCHED){
+            // load views. within the views we can echo out $songs and $amount_of_songs easily
+            echo $this->dressTemplate('/_templates/head', array('title'=> $this->pageTitle));        
+            require 'application/views/_templates/header.php';
+            require 'application/views/home/index.php';
+            require 'application/views/_templates/footer.php';
+
+        }else{
+            // load views. within the views we can echo out $songs and $amount_of_songs easily
+            echo $this->dressTemplate('/_templates/head_prelaunch', array('title'=> $this->pageTitle));        
+            require 'application/views/_templates/header_prelaunch.php';
+            require 'application/views/home/index_prelaunch.php';
+            require 'application/views/_templates/footer_prelaunch.php';
+        }
     }
 }
