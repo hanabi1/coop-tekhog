@@ -56,10 +56,8 @@ nav a {
 
 /* BANNER */  
 .banner {
-    position: relative;
-    background-image: url(../img/imagetest.jpg);
     /*background-size: 100%;*/
-    background-repeat: no-repeat;
+    /*background-repeat: no-repeat;*/
     height: 100%;
 }
 .banner img {
@@ -109,4 +107,21 @@ nav {
 nav a {
   font-size: 10px;
 }
+
+/* HEADER BANNER
+---------------------------------------------------------*/
+.banner img {
+  max-width: 100%;
+  margin: 0 auto 80px auto;
+  padding-top: 90px;
+  padding-bottom: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
 }
+}
+
+
+
+
+
+
