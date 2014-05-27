@@ -175,14 +175,14 @@ nav a {
 .bxslider > .slide > img.video-thumbnail {
   width:100%;
   margin: 0;
-  padding: 0;
+  padding: 0 8% 0 8%;
   max-height: 600px!important;    /*This fixes weird white box on thumbnail click*/
   display:inline-block!important;
-  background-color: #4f545a;
+  background-color: #000;
 }
 
 .bxslider > .slide{
-  background-color: black;
+  background-color: transparent;
 }
 
 .bx-wrapper .bx-viewport {

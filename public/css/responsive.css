@@ -7,6 +7,10 @@
 }
 
 @media screen and (max-width: 1152px) {
+  .bxslider > .slide > img.video-thumbnail {
+    width: 100%;
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 1024px) {
