@@ -13,10 +13,9 @@
 // Live FB Page --- 1380611578866107
 define('FB_PAGE_UID','570407576409153');
 
-//The App ID and Secret key below is the test apps id
-//251234321726333  ---  a793d6f12a3f87f0029e432be8dd3bec
-define('FB_APP_ID','251234321726333');
-define('FB_SECRET_KEY','a793d6f12a3f87f0029e432be8dd3bec');
+//Klaras Facebook App
+define('FB_APP_ID','748721845180297');
+define('FB_SECRET_KEY','edac4ad9d9a04ba8efa4d4bce7bee03a');
 
 /**
  * Configuration for: YouTube
