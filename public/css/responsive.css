@@ -81,6 +81,9 @@ nav a {
   width: 100%;
 }
 
+#eventbox > div:last-child > div:nth-last-child(2){
+  border-bottom:1px solid rgb(86, 95, 97);
+}
 
 }
 
