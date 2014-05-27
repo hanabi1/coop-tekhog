@@ -38,7 +38,8 @@ function renderData (movies) {
 		$('.bxslider').append(
 			
 			// We give the thumbnail img a #id that is the same as the Youtube ID.
-			'<li class="slide"><img id="' + movies[i].link + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + movies[i].link + '/maxresdefault.jpg"></li>'
+			'<li class="slide"><img id="' + movies[i].link + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + movies[i].link + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this)"></li>'
+
 		);
 		
 		//When the thumbnail is clicked...
@@ -304,5 +305,30 @@ function resetVideoPlayersToThumbnails(){
 			//So we replace the content in the parent of <img> ie the <li>!
 			$(this).parent().html('<iframe id="' + videoID +'"class="video-player" width="100%" height="600px" src="//www.youtube.com/embed/'+ videoID +'?modestbranding=1&autoplay=1&enablejsapi=1&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>');
 		});
+	}
+}
+
+function checkAndFixMissingImg(img){
+	//the 404 image size is 120*40. If we find one try a lower resolution 
+	if(img.naturalHeight == 90 && img.naturalWidth == 120){
+		console.log(img.id + 'didnt have the specified thumbnail resolution, trying with lower res version');
+		img.src = 'http://img.youtube.com/vi/' + img.id + '/hqdefault.jpg'
+		img.class = 'small-thumbnails'
+		//When img is loaded again check if the lower resolution was a 404 aswell
+		img.onload(function(){
+			if(this.naturalHeight == 90 && this.naturalWidth == 120){
+				this.src = 'http://img.youtube.com/vi/' + this.id + '/mqdefault.jpg'
+				//When meduim quality thumbail is loaded check if it exists
+				this.onload(function(){
+					//If mqdefault wasn available either then return the lowest possible defailt resolution
+					if(this.naturalHeight == 90 && this.naturalWidth == 120){
+						this.src = 'http://img.youtube.com/vi/' + this.id + '/default.jpg'
+						return this;
+					}
+				})
+			}else{
+				return img;
+			}
+		})
 	}
 }
