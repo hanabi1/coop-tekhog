@@ -166,6 +166,7 @@ nav a {
   padding: 0;
   max-height: 600px!important;    /*This fixes weird white box on thumbnail click*/
   display:inline-block!important;
+  background-color: #4f545a;
 }
 
 .bxslider > .slide{
@@ -174,6 +175,7 @@ nav a {
 
 .bx-wrapper .bx-viewport {
   left: 0;
+  background-color: #4f545a;
 }
 
 .movies-box {
