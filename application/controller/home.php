@@ -27,7 +27,7 @@ class Home extends Controller
             // load views. within the views we can echo out $songs and $amount_of_songs easily
             echo $this->dressTemplate('/_templates/head_prelaunch', array('title'=> $this->pageTitle));        
             require 'application/views/_templates/header_prelaunch.php';
-            require 'application/views/home/index_prelaunch.php';
+            // require 'application/views/home/index_prelaunch.php';
             require 'application/views/_templates/footer_prelaunch.php';
         }
     }
