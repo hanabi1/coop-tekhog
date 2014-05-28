@@ -14,27 +14,36 @@ class Movies extends Controller
         require 'application/views/_templates/footer.php';
     }
 
-    public function title($movieTitle = '')
+    public function getmovie($title)
     {
 
-        $movieModel = $this->loadModel('MoviesModel');
-        $result = $movieModel->getMovieFromDB($movieTitle);
-        if(!count($result)){
-            header('location: ' . URL);
-        }
+        header('Content-Type: application/json; charset=utf-8');   
+        
+        $movieModel = $this->loadModel('MoviesModel');   
 
-        echo $this->dressTemplate('/_templates/head', array('title'=> $this->pageTitle));        
-        require 'application/views/_templates/header.php';
-        require 'application/views/home/index.php';
-        require 'application/views/_templates/footer.php';
+        //Return one movie as JSON
+        echo json_encode($movieModel->getMovieFromDB(strtolower($title))); 
     }
 
     public function getallmovies()
     {
         header('Content-Type: application/json; charset=utf-8');        
         $movieModel = $this->loadModel('MoviesModel');   
-       
-        echo json_encode($movieModel->getAllMoviesFromAPI());
+        
+        $freshMovies = array();
+        $freshMovies = $movieModel->getAllMoviesFromAPI();
+
+        //Generates Machinetitles for the movies.
+        //Populates the 'machineTitle' element for each movie in the array.
+        //This is needed so we can access the movies though the URL /root/movies/overvag-nu-denna-titel.
+        //
+        //Example: 'Överväg Nu Denna Titel!' --> 'overvag-nu-denna-titel'
+        $freshMovies = $this->addMachineTitles($freshMovies);
+
+        //Cache the fresh movies to DB so we can get them for the next user
+        $movieModel->cacheMoviesToDB($freshMovies);  
+
+        echo json_encode($freshMovies);
     }
     
     public function getMovieEvents()
@@ -97,14 +106,20 @@ class Movies extends Controller
 
             //If there is a start time THEN add a end time too. (we dont want just an end time =)
             //Convert both if they are valid
-            if(isset($fqlResult[$i]['start_time']) && $fqlResult[$i]['start_time']){
+            if(isset($fqlResult[$i]['start_time'])){
                 $fqlResult[$i]['start_date'] = strftime('Den %e %B', date("U",strtotime($fqlResult[$i]['start_time'])));
                 $fqlResult[$i]['start_time'] = strftime('%H:%M', date("U",strtotime($fqlResult[$i]['start_time'])));
                     
-                if(isset($fqlResult[$i]['end_time']) && $fqlResult[$i]['end_time']){                     
+                if(isset($fqlResult[$i]['end_time'])){                     
                     $fqlResult[$i]['end_date'] = strftime('Den %e %B', date("U",strtotime($fqlResult[$i]['end_time'])));
                     $fqlResult[$i]['end_time'] = strftime('%H:%M', date("U",strtotime($fqlResult[$i]['end_time'])));
+                 }else{
+                    $fqlResult[$i]['end_date'] = '';
+                    $fqlResult[$i]['end_time'] = '';
                 }
+            }else{
+                $fqlResult[$i]['start_date'] = '';
+                $fqlResult[$i]['start_time'] = '';
             }
             $events[$i]=array();
 
