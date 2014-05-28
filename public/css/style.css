@@ -265,6 +265,14 @@ nav a {
   font-size: 18px;
 }
 
+/* PEOPLE */
+.people {
+  font-size: 12px;
+  padding-top: 60px;
+  margin-bottom: -40px;
+  color: #f1f1f1;
+}
+
 /* MOVIE WRAPPER
 ---------------------------------------------------------*/
 

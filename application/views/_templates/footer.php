@@ -5,6 +5,10 @@
 			<br>
 			<a href="http://www.facebook.com/samhallssar" title="Samhällssår på Facebook" target="_blank">Samhällssår på Facebook</a>
 		  </p>
+
+      <p class="people">
+        Initiativtagare: Klara Levin &#124; Logotype: John Åkerström &#124; Front-end: Raul Iribarren, Erika Berthsjö, Erik Danielsson och Alexander Nilsson &#124; Back-end: Sebastian Lockwood, Johan Sundström, Kim Ferm och Hannele Piirainen 
+      </p>
 		</footer>
 
 	</body>
