@@ -3,7 +3,7 @@
 $(document).ready(function(){
 	$.ajax({
 		// Get all movies from our database.
-    url:"movies/getallmovies",
+    url:"/movies/getallmovies",
 		dataType:"json",
 		cache: false,
 		// If successfull, run our renderData function and send the data (a JSON-object) to it.
@@ -105,7 +105,7 @@ function loadDescription(machineTitle){
 
 	$.ajax({
 		// Get all movies from our database.
-	    url:"movies/getmovie/" + machineTitle,
+	    url:"/movies/getmovie/" + machineTitle,
 			dataType:"json",
 			cache: false,
 		// If successfull, run our renderData function and send the data (a JSON-object) to it.
@@ -140,7 +140,7 @@ function loadEvents(){
 
 	$.ajax({
 		// Get all movies from our database.
-	    url:"movies/getmovieevents/",
+	    url:"/movies/getmovieevents/",
 			dataType:"json",
 			cache: false,
 		// If successfull, run our renderData function and send the data (a JSON-object) to it.

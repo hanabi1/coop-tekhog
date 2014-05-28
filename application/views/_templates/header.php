@@ -10,7 +10,7 @@
 	  	</nav>
 
 		<div class="banner">
-			<img src="public/img/text.png">
+			<img src="/public/img/text.png">
 		</div>
 
 	</header>

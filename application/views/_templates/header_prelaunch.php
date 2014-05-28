@@ -1,6 +1,6 @@
 	<header> 
 		<div class="banner">
-			<img src="public/img/text.png">
+			<img src="/public/img/text.png">
 		</div>
 		<div id="timeleft">
 		</div>
