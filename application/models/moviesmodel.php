@@ -62,7 +62,14 @@ class MoviesModel
             $moviesData[$i]=array('videoid'=> $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
             $moviesData[$i]+=array('title'=> $data['feed']['entry'][$i]['title']['$t']);
             $moviesData[$i]+=array('author'=> $data['feed']['entry'][$i]['author'][0]['name']['$t']);
-            $moviesData[$i]+=array('description'=> nl2br($data['feed']['entry'][$i]['media$group']['media$description']['$t']));
+            
+            if(isset($data['feed']['entry'][$i]['media$group']['media$description'])){
+                $moviesData[$i]+=array('description'=> nl2br($data['feed']['entry'][$i]['media$group']['media$description']['$t']));
+            }
+            else{
+                $moviesData[$i]+=array('description'=> 'Finns ingen beskrivning');
+            }
+            
             $moviesData[$i]+=array('link'=> $data['feed']['entry'][$i]['media$group']['yt$videoid']['$t']);
         
         //Makes sure that null values are not stored in DB
