@@ -1,0 +1,139 @@
+/* MEDIA QUERIES */
+@media screen and (max-width: 1344px) {
+}
+
+@media screen and (max-width: 1280px) {
+
+}
+
+@media screen and (max-width: 1152px) {
+  .bxslider > .slide > img.video-thumbnail {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+nav a {
+  font-size: 20px;
+}
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+}
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 640px) {
+/* NAV MENU */
+nav {
+  padding: 10px 0 5px 5px;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+nav li {
+  list-style: none;
+  display: inline-block;
+  line-height: 20px;
+  padding: 2%;
+  text-align: center;
+  color: #000;
+}
+nav a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #f1f1f1;
+}
+
+#bx-pager > a:nth-child(even) {
+  float: none;
+  width: 100%;
+}
+
+#bx-pager > a:nth-child(odd){
+  float: none;
+  width: 100%;
+}
+
+/* BANNER */  
+.banner {
+    /*background-size: 100%;*/
+    /*background-repeat: no-repeat;*/
+    height: 100%;
+}
+.banner img {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 90px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 30px;
+}
+
+.event-left {
+  float: none;
+}
+
+.event-right {
+  float: none;
+}
+
+#eventbox > div > div {
+  width: 100%;
+}
+
+#eventbox > div:last-child > div:nth-last-child(2){
+  border-bottom:1px solid rgb(86, 95, 97);
+}
+
+}
+
+@media screen and (max-width: 560px) {
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+and (orientation : landscape) {
+}
+
+@media screen and (max-width: 443px) {
+
+}
+
+@media screen and (max-width: 360px) {
+
+  /* NAV MENU */
+nav {
+  padding: 4px 0 5px 5px;
+  padding-right: 2%;
+  padding-left: 2%;
+}
+nav a {
+  font-size: 10px;
+}
+/* HEADER BANNER */
+.banner img {
+  max-width: 100%;
+  margin: 0 auto 80px auto;
+  padding-top: 90px;
+  padding-bottom: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+}
+
+
+
+
+
+

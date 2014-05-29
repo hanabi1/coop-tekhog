@@ -1,0 +1,39 @@
+INSTALL INSTRUCTIONS
+====================
+
+
+Rename two files and change two lines, then you're done!
+NO need to create a DataBase OR run a database dump! =)
+
+1.  Rename config.php(ta-bort-denna-parantes) to config.php in the folder /application/config/
+
+
+2.  Rename .htaccess(ta-bort-denna-parantes) in root to .htaccess with sublimeText
+
+	Right click it in sublime and rename.
+	For some reason you can't rename it in the explorer window
+
+
+3.  Change the basepath in /.htaccess(row 13) to your own path
+	Don't forget the '/' in the beginning AND the end
+
+	ex. 
+	RewriteBase /git/coop-tekhog/
+
+
+4 . Modify the base path in /application/config/config.php(row 14) to your own project home folder
+	Don't forget the / at the end
+
+	ex:
+    define('URL', 'http://localhost/samhalls_sar/');
+
+
+5.  Have you created a database password? if so, SKIP this step...
+	
+	Input your DB password in config.php.
+    It's usually blank...
+    
+    ex:
+    //define('DB_PASS', '');
+
+There is also a very good tutorial on this MVC in the folder /_tutorial/

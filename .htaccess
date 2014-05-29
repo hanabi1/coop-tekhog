@@ -1,0 +1,29 @@
+# Necessssary to prevent problems when using a controller named "index" and having a root index.php
+# more here: http://httpd.apache.org/docs/2.2/content-negotiation.html
+#Options -MultiViews
+
+# Activates URL rewriting (like myproject.com/controller/action/1/2/3)
+RewriteEngine On
+
+# Disallows others to look directly into /public/ folder
+#Options -Indexes
+
+# When using the script within a sub-folder, put this path here, like /mysubfolder/
+# If your app is in the root of your web folder, then leave it commented out
+# RewriteBase /plugg/git/coop-tekhog/
+
+# General rewrite rules
+
+# if the route chosen is to a directory then don't go to index.php
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# if the route chosen is to a file then don't go to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# if the route chosen is to a symbolic link then don't go to index.php
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# Send all routes to index.php
+# QSA means send the extra data along (ex. www.samhallsar.se/home?stuff=20)
+# L Means if this is true than this line is the last one in htaccess
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

@@ -1,0 +1,52 @@
+#timeleft{
+	width: 100%;
+	margin-top: -245px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	top:78%;
+	position: relative;
+
+	font-family: 'Open Sans',sans-serif;
+	/*font-weight: bold;*/
+	font-size: 100px;
+	color: #f1f1f1;
+}
+#header-contact {
+	letter-spacing: 1px;
+	color: #f1f1f1;
+	font-family: 'Oswald', sans-serif;
+	padding-top: 0px;
+	text-decoration: none;
+}
+#header-contact a {
+	font-weight: bold;
+}
+/*Enclosed the 'd h m s' in spans to make them smaller without changing the numbers*/
+span.countdown-prefix-small{
+	font-size: 20px;
+	margin-right:5px; 
+}
+
+
+@media screen and (max-width: 1023px) {
+	
+	#timeleft{
+	font-size: 30px;
+	}
+	.countdown-prefix-small{
+		font-size: 12px;
+		margin-right:3px; 
+	}
+}
+
+@media screen and (max-width: 599px) {
+	
+	#timeleft{
+	font-size: 20px;
+	}
+	.countdown-prefix-small{
+		font-size: 5px;
+		margin-right:3px; 
+	}
+}
