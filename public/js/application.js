@@ -278,13 +278,13 @@ function getMachineTitleFromLink(){
 function resetVideoPlayersToThumbnails(){
 
 
-	//If we find any iframes with the class .videolpayer then we switch 'em to images again!
+	//If we find any iframes with the class .videoaplayer then we switch 'em to images again!
 	var videoID = $('.video-player').attr('id');
 	
 	if(videoID){
 
 		//Transform our youtubevideo into a thumbnail image again
-		$('.video-player').parent().html('<img class="play-icon"src="public/img/play.png" alt="Play!"><img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this);" ondragstart="return false;" ondrop="return false;">');
+		$('.video-player').parent().html('<img class="play-icon"src="public/img/play.png" alt="Play!" onclick="(playIconClick(this))"><img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this);" ondragstart="return false;" ondrop="return false;">');
 		
 		//Rebind the clickhandler so that if we click on our thumbnail again. It will be a youtube movie
 		$('#' + videoID).click(function(){
@@ -310,7 +310,7 @@ function checkAndFixMissingImg(img){
 
 function playIconClick(playIconObject){
 	//Gets the movie id from the sibling thumbnail image 
-	var videoID = ($(playIconObject).siblings().attr('id'));
+	var videoID = ($(playIconObject).siblings('img').attr('id'));
 
 	playVideoOnThumbnailClick(videoID);
 }
