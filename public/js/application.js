@@ -17,6 +17,12 @@ $(document).ready(function(){
 
 			//Loads the facebook page events
 			loadEvents();
+
+			// Remove min-height on iOS after slideshow initialization
+			var iOS = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true;
+			if(iOS && $(".slideshow").css("min-height") == "100vh"){
+				$(".slideshow").css("min-height", "0");
+			}
 		},
     // If error.
 		error:function(errorData) {
