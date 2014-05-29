@@ -165,10 +165,10 @@ function loadEvents(){
 							data[i]['end_time'] = ' - ' + data[i]['end_time'];
 						}
 
-						var paragraph = '<h4><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' +data[i]['name'] + '" target="_blank">' + data[i]['name'] + '</a></h4><br>' + 
+						var paragraph = '<h4><a href="http://www.facebook.com/events/' + data[i]['id'] +'" title="' +data[i]['name'] + '" target="_blank">' + data[i]['name'] + '</a></h4><br>' + 
 										'<small>' + data[i]['start_date'] + ' ' + data[i]['start_time'] + data[i]['end_time'] + '</small><br>' +
 										'<small>' + data[i]['location'] + '</small><br><br>' +
-										'<br><p><a href="http://www.facebook.com/events/' + data[i]['eid'] +'" title="' + data[i]['name'] + '" target="_blank"><strong>Länk till Eventet</strong>' + '</a></p>'
+										'<br><p><a href="http://www.facebook.com/events/' + data[i]['id'] +'" title="' + data[i]['name'] + '" target="_blank"><strong>Länk till Eventet</strong>' + '</a></p>'
 
 						var alignment = '';
 
@@ -206,10 +206,10 @@ function loadEvents(){
 							data[0]['end_time'] = ' - ' + data[0]['end_time'];
 						}
 	
-						var paragraph = '<h4><a href="http://www.facebook.com/events/' + data[0]['eid'] +'" title="' +data[0]['name'] + '" target="_blank">' + data[0]['name'] + '</a></h4><br>' + 
+						var paragraph = '<h4><a href="http://www.facebook.com/events/' + data[0]['id'] +'" title="' +data[0]['name'] + '" target="_blank">' + data[0]['name'] + '</a></h4><br>' + 
 										'<small>' + data[0]['start_date'] + ' ' + data[0]['start_time'] + data[0]['end_time'] + '</small><br>' +
 										'<small>' + data[0]['location'] + '</small><br><br>' +
-										'<br><p><a href="http://www.facebook.com/events/' + data[0]['eid'] +'" title="' + data[0]['name'] + '" target="_blank"><strong>Länk till Eventet</strong>' + '</a></p>'					
+										'<br><p><a href="http://www.facebook.com/events/' + data[0]['id'] +'" title="' + data[0]['name'] + '" target="_blank"><strong>Länk till Eventet</strong>' + '</a></p>'					
 					
 					$('#eventbox').append('<div style="display:none;"></div')
 					$('#eventbox > div').append(paragraph).fadeIn();

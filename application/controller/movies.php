@@ -61,69 +61,30 @@ class Movies extends Controller
             'cookie' => true
         ));
 
-        /*
-         *-Query the events
-         *
-         *-We will select:
-         *  -name, start_time, end_time, location, description
-         *  -but there are other data that you can get on the event table
-         *      -https://developers.facebook.com/docs/reference/fql/event/
-         * 
-         *-As you will notice, we have TWO select statements here because
-         *-We can't just do "WHERE creator = your_fan_page_id".
-         *-Only eid is indexable in the event table
-         *  -So we have to retrieve list of events by eids
-         *      -And this was achieved by selecting all eid from
-         *          event_member table where the uid is the id of your fanpage.
-         *
-         *-Yes, you fanpage automatically becomes an event_member once it creates an event
-         *-start_time >= now() is used to show upcoming events only
-         */
-        $fql = 'SELECT
-                    eid, name, pic, start_time, end_time, location, description
-                FROM
-                    event
-                WHERE
-                    eid IN ( SELECT eid FROM event_member WHERE uid = "' . FB_PAGE_UID .'")
-                AND
-                    start_time >= now()
-                ORDER BY
-                    start_time desc';
-         
-        $param  =   array(
-            'method'    => 'fql.query',
-            'query'     => $fql,
-            'callback'  => ''
+        $response = $facebook->api(
+            "/1380611578866107/events"
         );
-         
-        $fqlResult   =   $facebook->api($param);
-        $events = array();
-        
+
+       
         //looping through retrieved data
-        for($i=0; $i < count($fqlResult); $i++) { 
+        for($i=0; $i < count($response['data']); $i++) { 
 
             setlocale( LC_ALL, 'sv_SE.utf8' );
 
             //If there is a start time THEN add a end time too. (we dont want just an end time =)
             //Convert both if they are valid
-            if(isset($fqlResult[$i]['start_time'])){
-                $fqlResult[$i]['start_date'] = strftime('Den %e %B', date("U",strtotime($fqlResult[$i]['start_time'])));
-                $fqlResult[$i]['start_time'] = strftime('%H:%M', date("U",strtotime($fqlResult[$i]['start_time'])));
+            if(isset($response['data'][$i]['start_time']) && $response['data'][$i]['start_time']){
+                $response['data'][$i]['start_date'] = strftime('Den %e %B', date("U",strtotime($response['data'][$i]['start_time'])));
+                $response['data'][$i]['start_time'] = strftime('%H:%M', date("U",strtotime($response['data'][$i]['start_time'])));
                     
-                if(isset($fqlResult[$i]['end_time'])){                     
-                    $fqlResult[$i]['end_date'] = strftime('Den %e %B', date("U",strtotime($fqlResult[$i]['end_time'])));
-                    $fqlResult[$i]['end_time'] = strftime('%H:%M', date("U",strtotime($fqlResult[$i]['end_time'])));
-                 }else{
-                    $fqlResult[$i]['end_date'] = '';
-                    $fqlResult[$i]['end_time'] = '';
+                if(isset($response['data'][$i]['end_time']) && $response['data'][$i]['end_time']){                     
+                    $response['data'][$i]['end_date'] = strftime('Den %e %B', date("U",strtotime($response['data'][$i]['end_time'])));
+                    $response['data'][$i]['end_time'] = strftime('%H:%M', date("U",strtotime($response['data'][$i]['end_time'])));
                 }
-            }else{
-                $fqlResult[$i]['start_date'] = '';
-                $fqlResult[$i]['start_time'] = '';
             }
             $events[$i]=array();
 
-            foreach ($fqlResult[$i] as $key => $value) {
+            foreach ($response['data'][$i] as $key => $value) {
                 //If the events properties are valid and plays nice add it to the event array
                 if(isset($value) && !trim($value) == '' && !is_nan(intval($value)) && !is_null($value) ){
                     $events[$i][$key] = ucfirst($value);
