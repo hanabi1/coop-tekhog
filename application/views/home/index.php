@@ -3,6 +3,7 @@
 
 <div class="movies-box" id="movies"> 
     <ul class="bxslider">       
+      <img class="play-icon"src="public/img/play.png" alt="Play!">    
     </ul>
 </div>
 
