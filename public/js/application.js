@@ -38,7 +38,7 @@ function renderData (movies) {
 		$('.bxslider').append(
 			
 			// We give the thumbnail img a #id that is the same as the Youtube ID.
-			'<li class="slide"><img id="' + movies[i].link + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + movies[i].link + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this);" ondragstart="return false;" ondrop="return false;"></li>'
+			'<li class="slide"><img class="play-icon"src="public/img/play.png" alt="Play!"><img id="' + movies[i].link + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + movies[i].link + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this);" ondragstart="return false;" ondrop="return false;"></li>'
 
 		);
 		
@@ -292,7 +292,7 @@ function resetVideoPlayersToThumbnails(){
 	if(videoID){
 
 		//Transform our youtubevideo into a thumbnail image again
-		$('.video-player').parent().html('<img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this);" ondragstart="return false;" ondrop="return false;">');
+		$('.video-player').parent().html('<img class="play-icon"src="public/img/play.png" alt="Play!"><img id="' + videoID + '" class="video-thumbnail" src="http://img.youtube.com/vi/' + videoID + '/maxresdefault.jpg" onload="checkAndFixMissingImg(this);" ondragstart="return false;" ondrop="return false;">');
 		
 		//Rebind the clickhandler so that if we click on our thumbnail again. It will be a youtube movie
 		$('#' + videoID).click(function(){
