@@ -22,6 +22,7 @@ $(document).ready(function(){
 			var iOS = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true;
 			if(iOS && $(".banner").css("min-height") == "100vh"){
 				$(".banner").css("min-height", "0");
+				console.log('fixing safari bugg....');
 			}
 		},
     // If error.
