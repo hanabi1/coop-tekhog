@@ -3,7 +3,7 @@
 # Options -MultiViews
 
 # Activates URL rewriting (like myproject.com/controller/action/1/2/3)
-# RewriteEngine On
+RewriteEngine On
 
 # Disallows others to look directly into /public/ folder
 Options -Indexes
