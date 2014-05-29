@@ -168,7 +168,7 @@ nav a {
   top:40%;
   text-align: center;
   position: absolute!important;
-  z-index: 10000;
+  z-index: 2;
 }
 
 /*Thumbnail*/
