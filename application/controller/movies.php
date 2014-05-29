@@ -38,7 +38,14 @@ class Movies extends Controller
         //This is needed so we can access the movies though the URL /root/movies/overvag-nu-denna-titel.
         //
         //Example: 'Överväg Nu Denna Titel!' --> 'overvag-nu-denna-titel'
+
         $freshMovies = $this->addMachineTitles($freshMovies);
+
+        foreach ($freshMovies as &$freshMovie) {
+            if(isset($freshMovie['description'])){
+                $freshMovie['description'] = $this->addATagsToTextLinks($freshMovie['description'],'|');
+            }
+        }
 
         //Cache the fresh movies to DB so we can get them for the next user
         $movieModel->cacheMoviesToDB($freshMovies);  
@@ -134,6 +141,18 @@ class Movies extends Controller
         }
         //Return movie array with valid Machinenames!
         return $movies;
+    }
+
+    private function addATagsToTextLinks($text, $delimiter){
+
+        $arr = explode('|', $text);
+        if(count($arr)>1){
+            for ($i=1; $i < count($arr) ; $i+=2) { 
+                $text = str_replace($delimiter . $arr[$i] . $delimiter, '<a href="//' . $arr[$i] . '" target="_blank">' . $arr[$i] . '</a>', $text);
+            }
+        }
+
+        return $text;
     }
 }
 
