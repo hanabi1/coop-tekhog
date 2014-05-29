@@ -246,7 +246,7 @@ function loadProjectInformation(){
 	    	//Everything good! Show Contact Details
 	    	}else{
 		    	$('#information > p').fadeOut(function(){
-					$('#information > p').html(data['feed']['media$group']['media$description']['$t']);
+					$('#information > p').html(br2nl(data['feed']['media$group']['media$description']['$t']));
 					$('#information > p').fadeIn();		    		
 		    	})
 	    	}	
@@ -307,4 +307,9 @@ function checkAndFixMissingImg(img){
 		img.ondrop="return false;";
 
 	}
+}
+
+
+function br2nl(str) {
+    return str.replace(/\n/g, "<br>");
 }
