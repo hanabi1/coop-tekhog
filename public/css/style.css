@@ -65,10 +65,7 @@ nav {
   text-align: center;
   padding-top: 5px;
 }
-/* #e4eeea */
-/* a8b0ab */
-/* 8b9c92 */
-/* #4c6066 */
+
 nav li {
   list-style: none;
   display: inline-block;
@@ -273,23 +270,4 @@ nav a {
   color: #f1f1f1;
 }
 
-/* MOVIE WRAPPER
----------------------------------------------------------*/
 
-/*.wrap {
-  width: 100%;
-  margin: 0px auto 0px;
-}
-
-.wrap p {
-  margin: 0 auto;
-  color: #fff;
-  padding: 2px 0 8px 0;
-  font-size: 16px
-}
-
-.wrap p:hover {
-  opacity: 0.55;
-}
-
-*/
