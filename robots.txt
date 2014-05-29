@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: 
-Disallow: /cgi-bin/
-Disallow: /application/
-Disallow: /documentation/
-Sitemap: http://www.samhallssar.se/sitemap.xml
