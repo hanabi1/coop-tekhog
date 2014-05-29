@@ -72,7 +72,7 @@ function renderData (movies) {
 
     	/*So were forced to work in a single div instead of a two column div system*/
     	$('#bx-pager').append(
-			'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title +' <span class="author">Av '+movies[i].author+'</p> </a>'
+			'<a id="' + movies[i].machinetitle + '" data-slide-index="'+i+'" href=""><p class="title">'+ movies[i].title'</a>'
 		);
 
 	};
