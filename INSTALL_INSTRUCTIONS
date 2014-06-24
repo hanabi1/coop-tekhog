@@ -3,7 +3,6 @@ INSTALL INSTRUCTIONS
 
 
 Rename two files and change two lines, then you're done!
-NO need to create a DataBase OR run a database dump! =)
 
 1.  Rename config.php(ta-bort-denna-parantes) to config.php in the folder /application/config/
 
@@ -35,5 +34,7 @@ NO need to create a DataBase OR run a database dump! =)
     
     ex:
     //define('DB_PASS', '');
+
+6.  Run the SQL dump /documentaion/database-export5.0.sql
 
 There is also a very good tutorial on this MVC in the folder /_tutorial/
